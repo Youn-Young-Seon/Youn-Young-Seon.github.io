@@ -1,3 +1,8 @@
+@font-face {
+    font-family: '고딕';
+    src: url(../font/gothic.ttf);
+}
+
 .profile {
     width: 100px;
     display: block; 
@@ -76,7 +81,10 @@
 /**************************************************************/
 
 body{
+    margin: 0px;
     position: relative;
+    /* font-family: 'gulim', 'dotum', 'arial'; */
+    font-family: '고딕';
 }
 
 .main-background{
@@ -136,31 +144,177 @@ body{
     color: gray;
 }
 
-.input-content{
+.input-background{
     position: relative;
+    width: 100%;
     top: 300px;
+    background-color: #373737;
+    padding-top: 200px;
+}
+
+.input-content{
+    /* position: relative;
+    top: 300px; */
+    background-color: white;
     width: 60%;
     max-width: 500px;
     height: auto;
     margin-right: auto;
     margin-left: auto;
-    padding: 16px;
+    padding: 50px;
+}
+
+.input-content div{
+    padding: 10px;
 }
 
 .input-content label{
+    display: inline-block;
     font-size: 16px;
-    margin: 6px;
+    margin-bottom: 8px;
 }
 
 .input-content input{
     border: 3px solid #eee;
     border-radius: 3px;
-    padding: 6px;
-    font-size: 12px;
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 16px;
 }
 
 .input-content input[type="email"]{
     width: 100%;
 }
 
+.input-content input[type="submit"]{
+    width: 80px;
+    background-color: #ffbf35;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    float: right;
+}
 
+.input-content-name{
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+}
+
+.input-content-name input{
+    width: 100%;
+}
+
+.input-message{
+    clear: both;
+}
+
+.input-message textarea{
+    width: 100%;
+    max-width: 500px;
+    height: 200px;
+    border: 3px solid #eee;
+    border-radius: 3px;
+    font-size: 16px;
+    margin-bottom: 16px;
+    resize: none;
+}
+
+/*********************************************************************/
+
+table{
+    border-collapse: collapse;
+    background-color: white;    
+}
+
+th{
+    color: #133761;
+    text-align: center;
+}
+
+td, th{
+    border: 1px solid #b2ccd6;
+    border-style: none;
+    padding: 8px;
+}
+
+.cart-background{
+    background-color: #b2ccd6;
+    color: #133761;
+    width: 100%;
+    height: auto;
+}
+
+.cart-container{
+    width: 100%;
+    padding: 32px 180px 32px 180px;
+    margin-right: auto;
+    margin-left: auto;
+    box-sizing: border-box;
+}
+
+.cart-table{
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    color: #b2ccd6;
+}
+
+.cart-table td,
+.cart-table th {
+    border-style: solid none;
+    vertical-align: middle;
+}
+
+.cart-footer button{
+    margin: 16px 0 16px 0;
+    width: 250px;
+    height: 70px;
+    background-color: #133761;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.btn {
+    padding: 15px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: coral;
+    color: white;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: chocolate;
+}
+
+.btn:focus{
+    background-color: grey;
+}
+
+.btn:active{
+    background-color: brown;
+}
+
+.input-test{
+    font-size: 20px;
+}
+
+.input-test:focus{
+    border: 2px solid red;
+}
+
+.custom-link{
+    text-decoration: none;
+}
+
+.custom-link:link{
+    color: violet;
+}
+
+.custom-link:visited{
+    color: black;
+}
