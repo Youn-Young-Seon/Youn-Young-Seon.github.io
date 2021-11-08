@@ -127,7 +127,7 @@ body{
     height: auto;
     padding: 25px;
     position: absolute;
-    top: 470px;
+    top: 500px;
     left: 0px;
     right: 0px;
     margin-left: auto;
@@ -317,4 +317,133 @@ td, th{
 
 .custom-link:visited{
     color: black;
+}
+
+/*********************************************************/
+
+.flex-container{
+    padding: 6px;
+    display: flex;    
+    background-color: #ff7576;
+    color: white;
+}
+
+.flex-container h1{
+    padding: 8px;
+    color: white;
+}
+
+.flex-container h2{
+    padding: 8px;    
+    color: white;
+}
+
+/*********************************************************/
+
+.response-container{
+    position: relative;
+    top: 300px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.response-container div{
+    padding: 16px;
+    font-size: 1rem;
+}
+
+.response-container i{
+    background-color: burlywood;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    padding-top: 25px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/*********************************************************/
+
+.shop-bg{
+    background-color: #eee;
+    padding: 20px;
+    position: relative;
+    top: 300px;
+}
+
+.shop-container{
+    display: flex;
+    width: 90%;
+    margin: auto;
+}
+
+.shop-item{
+    width: 33%;
+    padding: 10px;
+}
+
+.shop-item img{
+    width: 100%;
+    display: block;
+}
+
+.overlay-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.overlay-container:hover .half-overlay{
+    bottom: -50%;
+}
+
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: all 1s;
+}
+
+.overlay:hover{
+    opacity: 1;
+}
+
+.half-overlay{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    bottom: -100%;
+    transition: all 1s;    
+}
+
+
+@media screen and (max-width: 1200px) {
+    .main-title{
+        font-size: 30px;
+    }
+
+    .response-container div{
+        margin: 0px 160px 0 160px;
+    }
+    
+}
+
+@media screen and (max-width: 768px) {
+    .main-title{
+        font-size: 20px;
+    }
+
+    .response-container{
+        flex-direction: column;
+    }
+    
 }

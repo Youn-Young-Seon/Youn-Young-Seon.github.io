@@ -3,8 +3,21 @@
     <meta charset="UTF-8">    
     <title>Document</title>
     <link rel="stylesheet" href="css/main.css">
+    <!--[if lt IE 10]>
+    <link rel="stylesheet" href="ie/main.css">
+    <![endif]-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
 </head>
 <body style="margin: 0px;">
+
+    <nav class="flex-container">
+        <h1>Logo</h1>
+        <div style="flex-grow: 1;"></div>
+        <h2>products</h2>
+        <h2>services</h2>
+    </nav>
 
     <div class="main-background">
         <h4 class="main-title">Buy Our excellent Shoes!</h4>
@@ -45,6 +58,52 @@
                     <input type="submit" value="SEND">
                 </div>
             </form>
+        </div>
+    </div>
+
+    <div class="response-container">
+        <div>
+            <i class="fas fa-shopping-cart fa-3x"></i>
+            <h4>Fast Shopping</h4>
+            <p>lorem ipsum</p>
+        </div>
+        <div>
+            <i class="fab fa-ups fa-3x"></i>
+            <h4>Good Service</h4>
+            <p>lorem ipsum</p>
+        </div>
+        <div>
+            <i class="fas fa-ticket-alt fa-3x"></i>
+            <h4>Free Coupons</h4>
+            <p>lorem ipsum</p>
+        </div>
+        <div>
+            <i class="fab fa-product-hunt fa-3x"></i>
+            <h4>New Products</h4>
+            <p>lorem ipsum</p>
+        </div>
+    </div>
+
+    <div class="shop-bg">
+        <div class="shop-container">
+            <div class="shop-item">
+                <div style="position: relative;">
+                    <div class="overlay-container">
+                        <!-- <div class="overlay"></div> -->
+                        <div class="half-overlay">
+                            <h1>$ 60</h1>
+                            <h3>인기상품</h3>
+                        </div>
+                    </div>
+                    <img src="img/product1.jpg">
+                </div>
+            </div>
+            <div class="shop-item">
+                <img src="img/product2.jpg">
+            </div>
+            <div class="shop-item">
+                <img src="img/product3.jpg">
+            </div>
         </div>
     </div>
 </body>

@@ -1,0 +1,19 @@
+.flex-container{    
+    width: 100vw;
+    margin: 0px;
+    height: 100px;
+    box-sizing: border-box;
+}
+
+.flex-container h1{
+    float: left;
+}
+
+.flex-container h2{    
+    float: right;
+    
+}
+
+.ie-nav{
+
+}
