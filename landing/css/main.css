@@ -1,0 +1,59 @@
+@font-face {
+    font-family: 'Gothic';
+    src: url(/font/gothic.ttf);
+}
+
+*{
+    font-family: 'Gothic';
+}
+
+body {
+    margin: 0px;
+}
+
+button{
+    background-color: #444445;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn{
+    width: 120px;
+    height: 50px;
+    color: white;
+    font-size: 16px;
+}
+
+.lg-white{
+    color: white;
+    font-size: 32px;
+}
+
+.mi-white{
+    color: white;
+    font-size: 24px;
+}
+
+.sm-white{
+    color: white;
+    font-size: 16px;
+}
+
+.lg-black{
+    color: black;
+    font-size: 32px;
+}
+
+.mi-black{
+    color: black;
+    font-size: 24px;
+}
+
+.sm-black{
+    color: black;
+    font-size: 16px;
+}
+
+/********************************************************/
+
