@@ -1,0 +1,16 @@
+.bg-white-gray{
+    background-color: #f7f9fc;
+    z-index: -3;
+}
+
+.bg-skyblue{
+    background-color: #6fbaf8;
+}
+
+.text-skyblue{
+    color: #6fbaf8;
+}
+
+.text-white{
+    color: white;
+}
