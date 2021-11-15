@@ -28,7 +28,7 @@
     </div>    
     <div class="main-box">
         <p class="main-box-title">How we design our shoes</p>
-        <p class="main-box-content">Lorem ipsum dolor sit amet,
+        <p class="main-box-content pseudo">Lorem ipsum dolor sit amet,
             consectetur adipisicing elit. Dolorem aliquid,
             libero ut distinctio tempora labore ipsum tempore quae atque consectetur
             dolores, sapiente cumque animi provident.</p>
@@ -106,5 +106,41 @@
             </div>
         </div>
     </div>
+
+    <div style="position: relative; top: 300px;">
+        <progress></progress>
+        <input type="range">
+
+        <input placeholder="안녕하세요">
+
+        <label>안녕</label>
+        <input type="file">
+    </div>
+    
+    <style>
+        input[type=file]::-webkit-file-upload-button{
+            background-color: skyblue;
+            border: none;
+        }
+
+        progress{
+            /* 기본 배경 세팅 */
+            -webkit-appearance: none;
+            appearance: none;
+            background: white;
+            /* IE10 호환성 */
+            color: red;
+        }
+
+        progress::-webkit-progress-bar{
+            background-color: #eee;
+            border-radius: 4px;
+        }
+
+        progress::-webkit-progress-value{
+            background-color: red;
+            border-radius: 4px;
+        }
+    </style>
 </body>
 </html>

@@ -1,0 +1,155 @@
+@use 'reset';
+@use 'alert';
+
+
+
+%btn{
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+}
+
+.btn-green{
+    @extend %btn;
+    background-color: green;
+}
+
+.btn-red{
+    @extend %btn;
+    background-color: red;
+}
+
+.btn-blue{
+    @extend %btn;
+    background-color: blue;
+}
+
+.main-bg h4{
+    font-size: 16px;
+}
+
+.main-bg button{
+    color: red;
+}
+
+.main-bg{
+    width: 100px;
+    h4{
+        font-size: 16px;
+    }
+    button{
+        color: red;
+    }
+}
+
+$main-color: #2a4cb2;
+$sub-color: #eeeeee;
+$basic-size: 16px;
+
+.background{
+    background-color: $main-color;
+    font-size: ($basic-size - 2px);
+}
+
+.box{
+    color: $sub-color;
+    font-size: ($basic-size + 2px);
+}
+
+
+/*******************************************************************/
+
+@mixin 폰트스타일($구멍, $구멍2) {
+    font-size: $구멍;
+    #{ $구멍2 }: -1px;
+}
+
+h2{
+    @include 폰트스타일(40px, letter-spacing);
+    color: reset.$main-color;
+}
+
+h3{
+    @include 폰트스타일(30px, width)
+}
+
+h4{
+    font-size: 10px;
+    letter-spacing: -1px;
+}
+
+
+/*******************************************************************/
+
+$alert-green: #dff0d8;
+$alert-blue: #d9edf7;
+$alert-yellow: #fcf8e3;
+
+
+.p-alert-green{
+    @include alert.alert-p($alert-green);
+}
+
+.p-alert-blue{
+    @include alert.alert-p($alert-blue);
+}
+
+.p-alert-yellow{
+    @include alert.alert-p($alert-yellow);
+}
+
+
+
+$row-bg-color: #e6e2eb;
+$border-color: #d3ccdc;
+// $col-12: 100%;
+// $col-11: 91.63%;
+// $col-10: 83.33%;
+// $col-9: 74.97%;
+// $col-8: 66.64%;
+// $col-7: 58.31%;
+// $col-6: 49.98%;
+
+@mixin col-size($division) {
+    border-right: 2px solid $border-color;
+    font-size: 18px;
+    float: left;
+    padding-left: 12px;
+
+    @if ($division == 12) {
+        width: 100%;
+    }@else if($division == 6){
+        width: 50%;
+    }@else if($division == 4){
+        width: 33.33%;
+    }@else if($division == 3){
+        width: 25%;
+    }    
+}
+
+.row{
+    width: 100%;
+    height: 50px;
+    background-color: $row-bg-color;
+    margin-bottom: 16px;
+    padding: 12px;
+
+    .col-12{
+        @include col-size(12);
+    }
+    .col-6{
+        @include col-size(6);
+    }
+    .col-4{
+        @include col-size(4);
+    }
+    .col-3{
+        @include col-size(3);
+    }
+}
+
+.row::after{
+    clear: both;
+}
+
+

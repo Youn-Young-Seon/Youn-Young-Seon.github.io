@@ -1,0 +1,10 @@
+p{
+    width: 800px;
+    margin: 8px;
+    padding: 12px;
+    border-radius: 4px;
+}
+
+@mixin alert-p($p-bg-color) {
+    background-color: $p-bg-color;
+}
