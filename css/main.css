@@ -426,14 +426,6 @@ td, th{
 }
 
 
-/***************************************************/
-.pseudo::after{
-    content: '안녕';
-    color: red;
-    font-size: 30px;
-}
-
-
 @media screen and (max-width: 1200px) {
     .main-title{
         font-size: 30px;
