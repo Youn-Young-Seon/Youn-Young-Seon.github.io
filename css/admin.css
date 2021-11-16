@@ -12,6 +12,10 @@ h1 {
   border: none;
 }
 
+.box-shadowing {
+  box-shadow: 1px 1px 5px gray;
+}
+
 .left-skyblue {
   border-left: solid #87ceeb;
 }
@@ -45,6 +49,14 @@ h1 {
   align-items: center;
 }
 
+.header-search-mv {
+  transition: all 1s;
+}
+
+.header-search-mv:focus {
+  width: 500px;
+}
+
 .header-myPage {
   display: flex;
   align-items: center;
@@ -74,7 +86,6 @@ h1 {
 
 .myPage-redbox p {
   position: absolute;
-  top: 4px;
   left: 4px;
 }
 
@@ -83,13 +94,13 @@ h1 {
   height: 100%;
   background-color: #494cb4;
   float: left;
-  padding: 28px;
+  padding: 20px;
+  transition: all 1s;
+  position: fixed;
+  z-index: 1;
 }
 
 .sidebar-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   color: white;
 }
 
@@ -102,6 +113,43 @@ h1 {
   font-size: 20px;
 }
 
+.side-bar-icon p {
+  position: fixed;
+  transform: translateX(-100px);
+}
+
+.sidebar:hover {
+  width: 8%;
+}
+.sidebar:hover .side-bar-icon p {
+  -webkit-animation-name: sidebar-move;
+          animation-name: sidebar-move;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+.sidebar:hover .side-bar-icon {
+  text-align: left;
+}
+
+@-webkit-keyframes sidebar-move {
+  0% {
+    transform: translateX(-100px);
+  }
+  100% {
+    transform: translateX(30px);
+  }
+}
+
+@keyframes sidebar-move {
+  0% {
+    transform: translateX(-100px);
+  }
+  100% {
+    transform: translateX(30px);
+  }
+}
 .content {
   padding: 28px;
   width: 95%;
