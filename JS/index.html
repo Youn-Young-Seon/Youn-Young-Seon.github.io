@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <h2 id="hello">안녕하세요</h2>
+    <h2 id="hi">올때메로나</h2>
+
+    <div class="alert-box">
+        <span>Alert 박스</span>
+        <button id="alert-box-close">닫기</button>
+    </div>
+    <button onclick="changeText('아이디를 입력하세요')">버튼1</button>
+    <button onclick="changeText('비밀번호를 입력하세요')">버튼2</button>
+
+    <h4 id="test">안녕하세요</h4>
+
+    <p class="greeting">안녕하세요</p>
+    <p class="greeting">안녕하세요</p>
+    <p class="greeting">안녕하세요</p>
+
+    <button class="btn">버튼btn</button>
+    <button class="btn">버튼btn</button>
+    <button class="btn">버튼btn</button>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        document.getElementById('hello').innerHTML = '안녕';
+        document.getElementById('hi').innerHTML = '올때바밤바';
+        document.querySelector('#hello').style.fontSize = '30px';
+        
+
+
+        function 알림창열기(){
+            document.querySelector('.alert-box').style.display = 'block';
+        }
+
+        function 알림창닫기(){
+            document.querySelector('.alert-box').style.display = 'none';
+        }
+
+
+
+        function changeText(param){
+            document.querySelector('.alert-box').style.display = 'block';
+            document.querySelector('.alert-box > span').innerHTML = param;
+        }
+
+
+        document.querySelector('#alert-box-close').addEventListener('click', function(){
+            document.querySelector('.alert-box').style.display = 'none';
+        });
+
+        $('#test').html('안녕');
+
+        // document.querySelector('#test').setAttribute('class', 'yellow-bg');
+        // $('#test').attr('class', "yellow-bg")
+
+        document.querySelectorAll('.greeting')[0].innerHTML = '안녕';
+        document.querySelectorAll('.greeting')[1].innerHTML = '안녕';
+        document.querySelectorAll('.greeting')[2].innerHTML = '안녕';
+
+        $('.greeting').html('안녕');
+
+        document.querySelectorAll('.btn')[0].addEventListener('click', function(){});
+        document.querySelectorAll('.btn')[1].addEventListener('click', function(){});
+        document.querySelectorAll('.btn')[2].addEventListener('click', function(){});
+        
+        $('.btn').on('click', h4, function(){});
+
+    </script>
+</body>
+</html>
