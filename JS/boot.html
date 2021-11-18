@@ -10,15 +10,29 @@
   </head>
   <body>
 
+    <!-- <h3 id="hi">안녕</h3>
+
+    <script>
+        $('#hi').click(function(){
+            $('#hi').animate({ marginLeft: '100px', marginTop: '100px'}, 1000);
+        });
+    </script> -->
+
+    <div class="left-menu">
+        <p>Menu Title</p>
+    </div>
+
     <div class="black-background" id="modal">
         <div class="white-background">
             <p>로그인하세요</p>
             <form action="login.php" id="test-form">
                 <div class="form-group">
                   <input type="email" class="form-control" placeholder="Email" id="email">
+                  <p id="email-alert">이메일이 빈칸입니다.</p>
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control" placeholder="Password">
+                  <input type="password" class="form-control" placeholder="Password" id="password">
+                  <p id="password-alert">패스워드가 빈칸입니다.</p>
                 </div>
                 <button type="submit" class="btn btn-primary">전송</button>
             </form>
@@ -26,7 +40,7 @@
         </div>
     </div>
 
-    <div class="nav-menu">
+    <div class="nav-menu">        
         <h4>Shirts Studio</h4>
         <a href="#" id="nav-sub-button">Products</a>
     </div>
@@ -36,6 +50,19 @@
         <li class="list-group-item">Innerwear</li>
         <li class="list-group-item">Shirts</li>        
     </ul>
+
+    <script>
+
+        $(window).on('scroll', function(){
+            if($(window).scrollTop() > 100){
+                $('.nav-menu').addClass('small-nav-menu')
+            }else{
+                $('.nav-menu').removeClass('small-nav-menu')
+            }
+        });
+
+    </script>
+
       
     <div class="jumbotron main-background">
         <h1 class="display-4">Shirts Studio</h1>
@@ -43,21 +70,113 @@
         <hr class="my-4">
         <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
         <a id="login" class="btn btn-primary btn-lg" href="#" role="button">Log In</a>
+        <a id="show-menu" class="btn btn-danger btn-lg" href="#" role="button">Show Menu</a>
     </div>
+
+    <script>        
+        $('#show-menu').click(function(){
+            $('.left-menu').animate({marginLeft: '0px'}, 1000)
+        })
+    </script>
+
+    <h4 class="my-4 text-center">Showcase</h4>
+
+    <div style="overflow: hidden; position: relative;">
+        <div class="slide-container">
+            <div class="slide-box">
+                <img src="img/portfolio-1.jpg">
+            </div>
+            <div class="slide-box">
+                <img src="img/portfolio-2.jpg">
+            </div>
+            <div class="slide-box">
+                <img src="img/portfolio-3.jpg">
+            </div>
+        </div>
+        <div id="left-move" class="move-btn">
+            <button>&lt;&lt;</button>
+        </div>
+        <div id="right-move" class="move-btn btn-right">
+            <button>&gt;&gt;</button>
+        </div>
+    </div>
+
+    <button class="slide-1">1</button>
+    <button class="slide-2">2</button>
+    <button class="slide-3">3</button>
+
+    <div class="my-5"></div>
+
+    <script>        
+        $('.slide-1').click(function(){
+            reset();
+            $('.slide-container').addClass('sliding-basic');
+        });
+
+        $('.slide-2').click(function(){
+            reset();
+            $('.slide-container').addClass('sliding');
+        });
+
+        $('.slide-3').click(function(){
+            reset();
+            $('.slide-container').addClass('sliding2');
+        });
+
+        var cal_location = 0;
+
+        $('#left-move').click(function(){
+            if(cal_location == 0) return
+            if(cal_location == 1){
+                reset();
+                $('.slide-container').addClass('sliding-basic');
+                --cal_location;
+            }else if(cal_location == 2){
+                reset();
+                $('.slide-container').addClass('sliding');
+                --cal_location;
+            }
+        });
+
+        $('#right-move').click(function(){            
+            if(cal_location == 2) return;
+            if(cal_location == 0){
+                reset();
+                $('.slide-container').addClass('sliding');
+                ++cal_location;
+            }else if(cal_location == 1){
+                reset();
+                $('.slide-container').addClass('sliding2');
+                ++cal_location;
+            }            
+        });
+
+        function reset(){
+            $('.slide-container').removeClass('sliding');
+            $('.slide-container').removeClass('sliding-basic');
+            $('.slide-container').removeClass('sliding2');
+        }
+    </script>
+
 
     <script>
 
-        document.querySelector('#login').addEventListener('click', function(){
-            // if($('#test-input').val() == '안녕'){                
-            // if(document.querySelector('#test-input').value == '안녕'){                
-                document.querySelector('#modal').style.display = 'block';
-            // }
-        });
+        // document.querySelector('#login').addEventListener('click', function(){
+            // document.querySelector('#modal').style.display = 'block';        
+        // });
 
-        // $('#login').on('click', function(){
+        $('#login').on('click', function(){
             // $('#modal').css('display', 'block');
             // $("#modal").fadeIn();
-        // });
+            // $("#modal").slideDown(1000);
+
+            // $("#modal").css('bottom', '100%')
+            // $("#modal").css('display', 'block').animate({bottom: '0'}, 1000);
+
+            // $('#modal').css('transform', 'translateY(0)');
+
+            $('#modal').addClass('slide-down');
+        });
 
         $('#nav-sub-button').click(function(){
             $('.nav-sub').fadeToggle();
@@ -67,11 +186,37 @@
             $("#modal").hide();
         });
 
+        var 이메일안내창 = $('#email-alert');
+
         document.querySelector('#test-form').addEventListener('submit', function(e){
-            if(document.querySelector('#email').value == ''){
+            // if(document.querySelector('#email').value == ''){
+            //     e.preventDefault();
+            //     // alert('이메일 입력 !');
+            //     이메일안내창.show();
+            // }
+
+            // if(document.querySelector('#password').value == ''){
+            //     e.preventDefault();
+            //     $('#password-alert').show();
+            // }
+
+            var 이메일창 = document.querySelector('#email');
+            var 비밀번호창 = document.querySelector('#password');
+            var emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            var testEmail = /\S+@\S+\.\S+/;
+            var testPassword = /[A-Z]+/;
+
+
+            if(!testEmail.test(이메일창.value) || 이메일창.value == ''){
                 e.preventDefault();
-                alert('이메일 입력 !');                
+                이메일안내창.show();
             }
+
+            if(!testPassword.test(비밀번호창.value) || 비밀번호창.value == ''){
+                e.preventDefault();
+                $('#password-alert').show();
+            }
+            
         });
     </script>
 
