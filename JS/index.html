@@ -73,5 +73,47 @@
         $('.btn').on('click', h4, function(){});
 
     </script>
+
+    <div class="container mt-5" style="margin-bottom: 500px;">
+        <ul class="list">
+            <li class="tab-button" data-id="0">Products</li>
+            <li class="tab-button active"data-id="1">Information</li>
+            <li class="tab-button" data-id="2">Shipping</li>
+        </ul>
+
+        <div class="tab-content">
+            <p>상품설명입니다. Product</p>
+        </div>
+        <div class="tab-content show">
+            <p>상품정보입니다. Info</p>
+        </div>
+        <div class="tab-content">
+            <p>배송정보입니다. Shipping</p>
+        </div>
+    </div>
+
+    <script>
+
+        $('.list').data('작명', '값');
+        $('.list').data('작명');
+
+        $('.list').click(function(e){            
+            탭열기(e.target.dataset.id);
+            console.log(e.target);
+        });
+
+        // for(let i=0; i<$('.tab-button').length; i++){
+        //     $('.tab-button').eq(i).click(function(){    
+        //         탭열기(i);
+        //     });
+        // }
+
+        function 탭열기(i){
+            $('.tab-button').removeClass('active');    
+            $('.tab-button').eq(i).addClass('active');            
+            $('.tab-content').removeClass('show');
+            $('.tab-content').eq(i).addClass('show');
+        }
+    </script>
 </body>
 </html>
