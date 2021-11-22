@@ -255,6 +255,24 @@
         </div>
     </div>
 
+    <h4 id="product-title">상품제목</h4>
+    <p id="product-content">상품내용</p>
+    <div style="margin-bottom: 500px;"></div>
+
+    <script>
+        var 어레이 = ['BMW', 520];
+
+        var 오브젝트 = {brand : 'BMW', model: 520};
+
+        var 자료 = [{brand: 'BMW'}, {model: 520}];
+
+        // document.querySelector('#product-title').innerHTML = 어레이[0];
+        // document.querySelector('#product-content').innerHTML = 어레이[1];
+
+        document.querySelector('#product-title').innerHTML = 오브젝트.brand;
+        document.querySelector('#product-content').innerHTML = 자료[1].model;
+    </script>
+
     <script src="tab.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
