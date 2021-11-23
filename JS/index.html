@@ -66,11 +66,11 @@
 
         $('.greeting').html('안녕');
 
-        document.querySelectorAll('.btn')[0].addEventListener('click', function(){});
-        document.querySelectorAll('.btn')[1].addEventListener('click', function(){});
-        document.querySelectorAll('.btn')[2].addEventListener('click', function(){});
+        // document.querySelectorAll('.btn')[0].addEventListener('click', function(){});
+        // document.querySelectorAll('.btn')[1].addEventListener('click', function(){});
+        // document.querySelectorAll('.btn')[2].addEventListener('click', function(){});
         
-        $('.btn').on('click', h4, function(){});
+        // $('.btn').on('click', h4, function(){});
 
     </script>
 
@@ -114,6 +114,31 @@
             $('.tab-content').removeClass('show');
             $('.tab-content').eq(i).addClass('show');
         }
+    </script>
+
+    <div>
+        <button>버튼</button>
+        <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam praesentium, voluptate iusto sint atque officiis maxime vel id molestiae velit ullam deleniti ad, vero libero maiores tempora, quasi aspernatur voluptas.</h1>
+    </div>
+
+    <script>
+
+        var h1태그 = document.querySelector('h1');
+        var 원래글씨 = document.querySelector('h1').innerHTML;
+
+        $('button').click(function(){
+           애니메이션(h1태그, 원래글씨);
+        })
+
+        function 애니메이션(h1태그, 원래글씨){
+            h1태그.innerHTML = '';
+            for(let i=0; i<원래글씨.length; i++){
+                setTimeout(function(){                
+                    h1태그.innerHTML += 원래글씨[i];
+                }, (100 * i));            
+            }
+        }
+
     </script>
 </body>
 </html>

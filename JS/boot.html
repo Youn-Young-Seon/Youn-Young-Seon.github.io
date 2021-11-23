@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js" integrity="sha256-eVNjHw5UeU0jUqPPpZHAkU1z4U+QFBBY488WvueTm88=" crossorigin="anonymous"></script>
     <title>Hello, world!</title>
   </head>
   <body>
@@ -274,6 +275,29 @@
     </script>
 
     <script src="tab.js"></script>
+
+    <script>
+        
+        var 이미지1 = document.querySelectorAll('.slide-box img')[0];
+
+        var 매니저 = new Hammer.Manager(이미지1);
+        매니저.add(new Hammer.Pan({threshold: 0}));
+        
+        매니저.on('pan', function(e){
+            console.log(e.deltaX);   
+            if(e.deltaX < -1){ // 그림 슬라이드
+                $('.slide-container').css('transform', 'translateX('+e.deltaX+'px)');
+                if(e.isFinal){ // 마우스를 놓으면
+                    $('.slide-container').addClass('transforming');
+                    $('.slide-container').css('transform', 'translateX(-100vw)');
+                    setTimeout(function(){
+                        $('.slide-container').removeClass('transforming');
+                    }, 500);
+                }
+            }
+        });
+
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
   </body>

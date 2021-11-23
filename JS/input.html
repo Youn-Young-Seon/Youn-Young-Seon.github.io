@@ -27,6 +27,16 @@
         </div>
     </form> 
 
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    <button class="btn btn-danger">상품보여주기</button>
+
     <script>
         $('#option1').on('change', function(){
 
@@ -94,6 +104,23 @@
             }
         }
         
+        $('.btn-danger').on('click', function(){
+            $.ajax({
+                url: "https://codingapple1.github.io/data.json",
+                type: 'GET'
+            }).done(function(data){
+                console.log(data);
+                $('.card-title').text(data.model);
+                $('.card-text').text(data.price);                
+                $('.card-img-top').attr('src', data.img);
+            }).fail(function(){
+
+            }).always(function(){
+
+            });
+
+
+        });        
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 </body>
