@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+       
+        function 함수(){
+            console.log(this);
+        }
+
+        함수();
+
+        // test(); 에러
+        
+        var test = function(){
+            console.log(this);
+        }
+        
+        test();
+
+        
+    </script>
+    
+</body>
+</html>
