@@ -16,7 +16,7 @@ $.ajax({
 function productList(setArr){    
     cardSet(setArr);
     finalCardSet();
-    drag();
+    drag();    
 }
 
 function cardSet(setArr){
@@ -43,25 +43,55 @@ function finalCardSet(){
                                 <div class="card-body-productbox" id="card-body-productbox">
                                     <div>이곳에 상품을 놓아주세요.</div>
                                 </div>
-                                <div class="product-detail">
-                                <div class="product-detail-img">
-                                    <img src="img/pr1.JPG">
-                                </div>
-                                <div class="product-detail-content">
-                                    <div>전면어저구</div>
-                                    <div>ㅇㄹㄴㅇㄹㄴㄹ</div>
-                                    <div>
-                                        수량<input type="number" class="form-control" style="width: 80%; display: inline-block;" value="1">
-                                    </div>
-                                    <div>합계 : 5000000</div>
-                                </div>
+                                <div id="product-cartegory"></div>
+                                <p id="cartegoryTotalP" class="card-text" style="text-align: right;">총 합계 0원</p>                          
                             </div>
-                                <p class="card-text" style="text-align: right;">총 합계 0원</p>                          
-                            </div>
-                            <button class="btn btn-primary" style="font-size: 24px;">구매하기</button>
+                            <button id="buy" class="btn btn-primary" style="font-size: 24px;">구매하기</button>
                         </div>
                     </div>`;
     $('#card-container').append(finalCard);
+    canvasView();
+}
+
+function cartegorySet(obj){
+    let cartegoryNum = $('#product-cartegory').children().length;
+    for(let i=0; i<cartegoryNum; i++){
+        let cartegoryCheck = $('#product-cartegory').children().eq(i).attr('id');
+        if(obj.id == cartegoryCheck){
+            alert('해당 상품은 장바구니에 존재합니다.');
+            return;
+        }
+    }
+
+    let dataUnitPrice = parseInt(obj.price);
+    let dataTotalPrice = 0;
+
+    let cartegory = `<div class="product-detail" id="${obj.id}">
+                        <div class="product-detail-img">
+                            <img src="img/${obj.photo}">
+                        </div>
+                        <div class="product-detail-content">
+                            <div>${obj.product_name}</div>
+                            <div>${obj.brand_name}</div>
+                            <div>
+                                수량<input id="cartegoryNum${obj.id}" data-id="cartegoryNum" type="number" class="form-control" style="width: 80%; display: inline-block;" value="1">
+                            </div>
+                            <div id="cartegoryTotalSum${obj.id}" class="cartegoryTotalSum" data-total="" data-id="${obj.price}">합계 : ${obj.price}</div>
+                        </div>
+                    </div>`;
+    $('#product-cartegory').append(cartegory);
+
+    $(`#cartegoryTotalSum${obj.id}`).data('total', dataUnitPrice);
+    for(let i=0; i<cartegoryNum+1; i++){
+        let temp = parseInt($('.cartegoryTotalSum').eq(i).data('total'));
+        if(isNaN(temp) === false){
+            dataTotalPrice += temp;
+        }
+        if(temp === ''){
+            dataTotalPrice += 0;
+        }
+    }
+    $('#cartegoryTotalP').text(`총 합계 ${dataTotalPrice}원`);
 }
 
 function drag(){
@@ -74,14 +104,70 @@ function drag(){
     });
 
     $('#card-body-productbox').droppable({
-        drop: function(event, ui){        
+        drop: function(event, ui){
             var item = $(ui.draggable);
             let cardId = $('#' + item[0].id).attr('id');
             let id = cardId.substring(4);
-            
-            console.log(rawDataArr[id]);
+
+            let selectObject = rawDataArr[id];
+
+            cartegorySet(selectObject);
+            modifyCartegryNum();
         }
     });    
+}
+
+function modifyCartegryNum(){
+    let input = $('.product-detail-content input');
+    input.on('input', function(){
+        let inputParent = $(this).parent().parent();
+        let inputSum = $(this).val();
+        let totalSum = inputParent.parent().parent().parent().children('p');
+        
+        let unitSum = inputParent.children().eq(3);
+        let thisPrice = unitSum.data('id');    
+        
+        let totalUnitSum = cartegoryUnitSum(inputSum, thisPrice, unitSum)
+        
+        unitSum.text(`합계 : ${totalUnitSum}`);
+
+        
+        totalSum.text(`총 합계 ${cartegorySum()}원`);
+    });
+};
+
+function cartegoryUnitSum(sum, price, unitSum){
+    let setPrice = parseInt(sum) * parseInt(price);
+    
+    if(sum > 0 && price > 0){
+        unitSum.data('total', setPrice);
+        return setPrice;
+    }else{
+        unitSum.data('total', '');
+        return `수량이 잘못 되었습니다.`;
+    }
+}
+
+function cartegorySum(){        
+    let eachSum = $('.cartegoryTotalSum');
+    let totalSum = 0;
+
+    for(let i=0; i<eachSum.length; i++){
+        let intSum = parseInt(eachSum.eq(i).data('total'));
+        if(isNaN(intSum) === false){
+            totalSum += intSum;
+        }
+        if(intSum === ''){
+            totalSum += 0;
+        }
+    }
+    return totalSum;
+}
+
+function canvasView(){
+    document.querySelector('#buy').addEventListener('click', function(){
+        $('#canvas').css('display', 'inline');
+    });
 }
 
 document.querySelector('.header-menulist-li').addEventListener('click', function(e){    
@@ -106,5 +192,17 @@ document.querySelector('#search').addEventListener('input', function(){
     //     // $('.card-title').css('background-color', 'yellow');
     // }
 });
+
+const canvas = document.querySelector('#canvas');
+canvas.width = 500;
+canvas.height = 400;
+
+let c = canvas.getContext('2d');
+
+c.font = '16px dotum';
+c.fillRect(0, 0, 1000, 50);
+c.fillText('영수증', 30, 80);
+c.fillText('반갑습니다', 30, 120);
+c.fillRect(0, 400, 1000, 100);
 
 

@@ -109,3 +109,13 @@ $font-xl-size: 32px;
 .drag-opt{
     z-index: 5;
 }
+
+#canvas{
+    display: none;
+    background-color: white;
+    position: fixed;
+    top: 200px;
+    left: 250px;
+    border: 1px solid black;
+    z-index: 6;
+}
