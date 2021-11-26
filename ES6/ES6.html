@@ -6,22 +6,81 @@
 </head>
 <body>
 
+    <button id="버튼">버튼이에요</button>
+
     <script>
        
-        function 함수(){
-            console.log(this);
+    // function 생성자or함수(){
+    //     this.테스트 = "kim";
+    //     console.log(this);
+	// }        
+
+	// new 생성자or함수(); // 생성자or함수 {}
+    // 생성자or함수(); // Window
+
+    // document.getElementById('버튼').addEventListener('click', function(e){
+    //     console.log(this); // document.getElementById('버튼') (4)
+    //     var 어레이 = [1,2,3];
+    //     어레이.forEach(function(){
+    //         console.log(this); // window, window, window (1)
+    //     });
+    // });
+
+    // var 오브젝트 = {
+    //     이름들 : ['김', '이', '박'],
+    //     함수 : function(){
+    //         console.log(this); // 오브젝트 (2)
+    //         오브젝트.이름들.forEach(function(){
+    //             console.log(this); // window, window, window (1)
+    //         });
+    //     }
+    // }
+
+    // console.log(오브젝트.함수());
+    
+    // var 오브젝트2 = {
+    //     이름들 : ['김', '이', '박'],
+    //     함수 : function(){
+    //         console.log(this); // 오브젝트2 (2)
+    //         오브젝트2.이름들.forEach( () => {
+    //             console.log(this); // 오브젝트2 (2)
+    //         });
+    //     }
+    // }
+    
+    // console.log(오브젝트2.함수());
+
+    var 사람 = {
+        name: '손흥민',
+        sayHi: function(){
+            console.log(`안녕 나는 ${this.name}`);
         }
+    }
 
-        함수();
+    사람.sayHi(); // 안녕 나는 손흥민
 
-        // test(); 에러
-        
-        var test = function(){
-            console.log(this);
-        }
-        
-        test();
+    
+    var 자료 = {
+        data: [1, 2, 3, 4, 5]
+    }
 
+    자료.전부더하기 = function(){
+        var sumArr = this.data;
+        var result = 0;
+        sumArr.forEach(function(a){
+            result += a;
+        });
+        return result;   
+    }
+
+    자료.전부더하기();
+
+    document.getElementById('버튼').addEventListener('click', function(){
+        let text = this.innerHTML;
+        setTimeout(() => {
+            console.log(text);
+        }, 1000);
+    });    
         
     </script>
     
