@@ -6,7 +6,7 @@
 </head>
 <body>
 
-    <button id="버튼">버튼이에요</button>
+    <!-- <button id="버튼">버튼이에요</button> -->
 
     <script>
        
@@ -50,39 +50,102 @@
     
     // console.log(오브젝트2.함수());
 
-    var 사람 = {
-        name: '손흥민',
-        sayHi: function(){
-            console.log(`안녕 나는 ${this.name}`);
-        }
-    }
+    // var 사람 = {
+    //     name: '손흥민',
+    //     sayHi: function(){
+    //         console.log(`안녕 나는 ${this.name}`);
+    //     }
+    // }
 
-    사람.sayHi(); // 안녕 나는 손흥민
+    // 사람.sayHi(); // 안녕 나는 손흥민
 
     
-    var 자료 = {
-        data: [1, 2, 3, 4, 5]
-    }
+    // var 자료 = {
+    //     data: [1, 2, 3, 4, 5]
+    // }
 
-    자료.전부더하기 = function(){
-        var sumArr = this.data;
-        var result = 0;
-        sumArr.forEach(function(a){
-            result += a;
-        });
-        return result;   
-    }
+    // 자료.전부더하기 = function(){
+    //     var sumArr = this.data;
+    //     var result = 0;
+    //     sumArr.forEach(function(a){
+    //         result += a;
+    //     });
+    //     return result;   
+    // }
 
-    자료.전부더하기();
+    // 자료.전부더하기();
 
-    document.getElementById('버튼').addEventListener('click', function(){
-        let text = this.innerHTML;
-        setTimeout(() => {
-            console.log(text);
-        }, 1000);
-    });    
+    // document.getElementById('버튼').addEventListener('click', function(){
+    //     let text = this.innerHTML;
+    //     setTimeout(() => {
+    //         console.log(text);
+    //     }, 1000);
+    // });
+
+    // 함수(); // error
+    // function 함수() {
+    //     console.log(안녕);
+    //     let 안녕 = 'Hello!';
+    // }
+
+    // 함수(); // error
+    // var 함수 = function() {
+    //     console.log(안녕);
+    //     var 안녕 = 'Hello!';
+    // }
+
+    // let a = 1;
+    // var 함수 = function() {
+    //     a = 2;
+    // }
+    // console.log(a); // 1
+
+    // let a = 1;
+    // var b = 2;
+    // window.a = 3;
+    // window.b = 4;
+
+    // console.log(a + b); // 1 + 4 = 5
+
+    // for (let i = 1; i < 6; i++) { 
+    //     setTimeout(function() { console.log(i); }, i*1000 ); 
+    // }
+
+    var pants = 20;
+    var socks = 100;
+    `바지${pants} 양말${socks}`;
+
+    function 해체분석기(문자열, 변수, 변수2){
+        변수 = 0;
+        if(변수 == 0){
+            console.log(문자열[1] + ' 다 팔렸어요' + 문자열[0] + 변수2);
+            return;
+        }
+        console.log(문자열[1] + 변수 + 문자열[0] + 변수2);
+    };    
+
+    해체분석기`바지${pants} 양말${socks}`;
         
     </script>
+
+    <!-- <div style="display : none">모달창0</div>
+    <div style="display : none">모달창1</div>
+    <div style="display : none">모달창2</div>
+
+    <button>버튼0</button>
+    <button>버튼1</button>
+    <button>버튼2</button>
+
+    <script> 
+        var 버튼들 = document.querySelectorAll('button');
+        var 모달창들 = document.querySelectorAll('div');
+        
+        for (let i = 0; i < 3; i++){
+            버튼들[i].addEventListener('click', function(){
+                모달창들[i].style.display = 'block';
+            });
+        }    
+    </script> -->
     
 </body>
 </html>
