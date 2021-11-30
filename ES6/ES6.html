@@ -228,13 +228,142 @@
         // }
         // 글자세기('aarqwrsfwfqfdwfqcbbb');
 
-        var 이름1 = { name : '김' };
-        function 변경(obj){
-            // obj = {name: 'park'};
-            obj.name  = 'park';
-        }
-        변경(이름1);
-        console.log(이름1);
+        // var 이름1 = { name : '김' };
+        // function 변경(obj){
+        //     // obj = {name: 'park'};
+        //     obj.name  = 'park';
+        // }
+        // 변경(이름1);
+        // console.log(이름1);
+
+        // function product(name, price){
+        //     this.name = name;
+        //     this.price = price;
+        //     this.부가세 = function(){
+        //         console.log(this.price * 0.1);
+        //     }
+        // }
+        // let 상품1 = new product('shirts', 50000);
+        // let 상품2 = new product('pants', 60000);
+        // 상품1.부가세();
+
+        // function Student(name, age){
+        //     this.name = name;
+        //     this.age = age;
+        //     this.sayHi = function(){
+        //         console.log(`안녕 나는 ${name}이야`);
+        //     }
+        // }
+        // var 학생1 = new Student('Kim', 20);
+        // var 학생2 = new Student('Park', 21);
+        // var 학생3 = new Student('Lee', 22);
+        // 학생1.sayHi();
+        // 학생2.sayHi();
+        // 학생3.sayHi();
+
+        // function Parent(){
+        //     this.name = 'Kim';
+        // }
+        // var a = new Parent();
+        // a.__proto__.name = 'Park';
+        // console.log(a.name) // Kim
+        // console.log(Parent.prototype.name) // Park
+
+        // function Student(이름, 나이){
+        //     this.name = 이름;
+        //     this.age = 나이;
+        // }
+        // Student.prototype.sayHi = function(){
+        //     console.log('안녕 나는 ' + this.name + '이야');
+        // }
+        // var 학생1 = new Student('Kim', 20);
+        // 학생1.sayHi(); // Student의 prototype sayHi 함수를 arrow Function으로 정의하면 상위에있는 this를 받아오게되는데 Student()의 상위는 window이다.
+
+        // var arr = [1,2,3,4,3,5,3,4,3,5,6,3,6,4,67,7,6,3,3];
+        // arr.__proto__.remove3 = function(){
+        //     for(let i=0; i<this.length; i++){
+        //         if(this.indexOf(3) == -1){
+        //             return;
+        //         }else{
+        //             this.splice(this.indexOf(3), 1);
+        //         }
+        //     }
+        // }
+        // arr.remove3();
+        // console.log(arr); //[1,2]
+
+        // class Animal{
+        //     constructor(type, color){
+        //         this.type = type;
+        //         this.color = color;
+        //     }
+        //     한살먹기(){
+        //         if(this instanceof Cat){
+        //              this.age += 1; 
+        //         }
+        //     }
+        // }
+        // var 강아지1 = new Animal('말티즈', 'white');
+        // var 강아지2 = new Animal('진돗개', 'brown');
+
+        // class Cat extends Animal{
+        //     constructor(type, color, age){
+        //         super(type, color);
+        //         this.age = age;
+        //     }
+        // }        
+        // var 고양이1 = new Cat('코숏', 'white', 5);
+        // var 고양이2 = new Cat('러시안블루', 'brown', 2);
+
+        // class Unit{
+        //     constructor(공격력 = 5, 체력 = 100){
+        //         this.공격력 = 공격력;
+        //         this.체력 = 체력;
+        //     }
+        //     get battlePoint(){
+        //         return parseInt(this.공격력) + parseInt(this.체력);
+        //     }
+        //     set heal(힐){
+        //         this.체력 += 힐;
+        //     }
+        // }
+        // var 유닛1 = new Unit();
+        // var 유닛2 = new Unit(8, 200);
+        // console.log(유닛1.battlePoint);
+        // console.log(유닛2.battlePoint);
+        // console.log(유닛1.heal = 50);
+        // console.log(유닛2.heal = 30);
+        // console.log(유닛1.battlePoint);
+        // console.log(유닛2.battlePoint);
+
+        // var data = {
+        //     odd: [],
+        //     even: [],
+        //     setData(...add){
+        //         for(let i=0; i<add.length; i++){
+        //             if(add[i] % 2 == 1){
+        //                 this.odd.push(parseInt(add[i]));
+        //             }else{
+        //                 this.even.push(parseInt(add[i]));
+        //             }
+        //         }
+        //     },
+        //     getData(){                
+        //         return [...this.odd, ...this.even].sort(function(a, b){
+        //             if(a > b){
+        //                 return 1;
+        //             }else if(a < b){
+        //                 return -1;
+        //             }else{
+        //                 return 0;
+        //             }
+        //         });
+        //     }            
+        // }
+        // data.setData(4, 87, 34, 54, 545, 233, 2, 3);
+        // console.log(data);
+        // console.log(data.getData());
+        
     </script>
     
 </body>
