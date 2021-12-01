@@ -475,34 +475,78 @@
         //         });
         // }
 
-        async function 더하기(){
+        // async function 더하기(){
             // return 1 + 1;
-            // return Promise.reject('실패임'); // 실패 보내기
-            var 프로미스 = new Promise(function(성공, 실패){
-                var 힘든연산 = 1 + 1;
-                성공(100);
+            // var 프로미스 = new Promise(function(성공, 실패){
+                // var 힘든연산 = 1 + 1;
+                // 성공(100);
                 // 실패(100); // error
-            });
-
-            try{
-                var 결과 = await 프로미스;
-                console.log(결과);
-            }catch{
-                console.log('프로미스 연산이 잘 안되었군요')
-            }
-
-            // 프로미스.then(function(){
+                // });
+            // async function 프로미스(){
+                // return 100;
+                // return Promise.reject('실패임'); // 실패 보내기
+            // }            
+            // try{
+            //     var 결과 = await 프로미스();
+            //     console.log(결과);
+            // }catch{
+            //     console.log('프로미스 연산이 잘 안되었군요')
+            // }
+            // 프로미스.then(function(결과){
             //     console.log('성공했어요')
+            //     console.log(결과);        
             // });
-        }
-
-        더하기();
+        // }
+        // 더하기();
 
         // 더하기().then(function(결과){
-        //     console.log('성공이에요');
-        //     console.log(결과);        
+            // console.log('성공이에요');
+            // console.log(결과);        
         // });
+
+        // async function 더하기(){
+        //     var 어려운연산 = new Promise((성공, 실패)=>{
+        //         var 결과 = 1 + 1;
+        //         성공(결과);
+        //     });
+        //     어려운연산.then(function(result){
+        //         console.log(result);
+        //     });
+        // }
+        // 더하기();
+
+        // async function 더하기(){
+        //     async function 어려운연산(){                
+        //         return 1 + 1;
+
+        //     }
+        //     var result = await 어려운연산();
+        //     console.log(result);
+        // }
+        // 더하기();
+
     </script>
+
+    <!-- <button>버튼</button>
+
+    <script>
+        var promise = new Promise(function(resolve, reject){
+            document.querySelector('button').addEventListener('click', function(){
+                resolve('성공했어요');
+                // reject();
+            });
+        });
+            
+        async function 클릭(){
+            try{
+                var 결과 = await promise;
+                console.log(결과);
+            }catch{
+                console.log('잘못 되었습니다.');
+            }
+        }
+        클릭();
+    </script> -->
 
     <!-- <script type="module">
         import a from '/library.js'
