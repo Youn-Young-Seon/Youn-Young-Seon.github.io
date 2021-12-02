@@ -524,7 +524,90 @@
         //     console.log(result);
         // }
         // 더하기();
+            // function 첫번째(파람, 함수){
+            //     console.log(파람);
+            //     함수();
+            // }
 
+            // function 두번째(함수){
+            //     console.log(2);
+            //     함수();
+            // }
+
+            // function 세번째(함수){            
+            //     console.log(3);
+            //     함수();
+            // }
+            
+            // console.log('-----------before-----------')
+
+            // 첫번째('오오', function(){
+            //     두번째(function(){
+            //         // 세번째(function(){
+            //             // console.log(4);
+            //         // })
+            //     })
+            // });
+
+            // console.log('-----------after-----------')
+
+            // let 데이터 = [1,2,3,4,5,6,7,8,9];
+            // for (let i of 데이터){
+            //     for(let j of 데이터){                    
+            //         console.log(`${데이터[i-1]} * ${j} = ${(데이터[i-1] * j)}`);
+            //     }
+            // }
+
+            // var products = [
+            //     {
+            //         name1 : 'chair',
+            //         price1 : 7000,
+            //     },
+            //     {
+            //         name2 : 'sofa',
+            //         price : 5000,
+            //     },
+            //     {
+            //         name1 : 'desk',
+            //         price3 : 9000,
+            //     },
+            // ];                    
+            // let newKey;
+            // let newValue;            
+            // for (let item of products) {
+            //     for (let key in item) {
+            //         //마지막글자를 숫자로변환했을 때 NaN이 안나오면 (숫자면)
+            //         if (isNaN(parseInt(key.slice(-1))) == false ) {
+            //             newValue = item[key];
+            //             newKey = key.slice(0, -1); 
+            //             item[newKey] = newValue;
+            //             delete item[key]; 
+            //         }
+            //     }
+            // }
+            // console.log(products);
+            
+            // for(let i of products){            
+            //     let getKey = Object.keys(i);
+            //     for(let j of getKey){                                        
+            //         let lastIndex = parseInt(j.charAt(j.length-1));
+            //         console.log(j);
+            //         console.log(lastIndex);
+            //         if(!isNaN(lastIndex)){                  
+                        
+            //         }
+            //     }                
+            // }
+
+            // var 심볼 = Symbol('심볼');
+            // var weight = Symbol('내 시크릿 몸무게임');
+            // var height = Symbol('시크릿 키');
+            // var person = {name: 'Kim'};
+            // person[weight] = 200;
+            // person[height] = 160;
+            // for(var key in person){
+            //     console.log(person[key]);
+            // }
     </script>
 
     <!-- <button>버튼</button>
@@ -546,6 +629,56 @@
             }
         }
         클릭();
+    </script> -->
+
+    <!-- <custom-input name="123"></custom-input>
+    <custom-input></custom-input>
+
+    <script>
+            class 클래스 extends HTMLElement{
+                connectedCallback(){
+                    // let 변수 = document.createElement('label');
+                    // this.appendChild(변수);
+                    // let name = this.getAttribute('name');
+                    this.innerHTML = `<label>이메일인풋이에요</label><input>`;
+                }
+                static get observedAttributes(){
+                    return ['name']
+                }
+                attributeChangedCallback(){
+                    console.log(this.getAttribute('name'))
+                }
+            }
+            customElements.define('custom-input', 클래스);
+    </script> -->
+
+    <!-- <div id="mordor"></div>
+    <custom-input></custom-input>
+
+    <template id="template1">
+        <label>이메일을 입력하쇼</label><input>
+        <style>label {color: red}</style>
+    </template>
+
+    <script>
+
+        document.querySelector('#mordor').attachShadow({mode: 'open'});
+        document.querySelector('#mordor').shadowRoot.innerHTML = '<p>심연에서 왔도다</p>';
+
+        class 클래스 extends HTMLElement{
+            connectedCallback(){                
+                this.attachShadow({mode: 'open'});
+                // this.shadowRoot.innerHTML = `<label>이메일을 입력하쇼</label><input>
+                //     <style>label { color: red }</style>`;
+                this.shadowRoot.append(template1.content.cloneNode(true));
+                let el = this.shadowRoot.querySelector('label');
+                el.addEventListener('click', function(){
+                    console.log('클릭함');
+                })
+            }
+        }
+        customElements.define('custom-input', 클래스);
+
     </script> -->
 
     <!-- <script type="module">
