@@ -22,10 +22,16 @@ color : ${ props => props.색상 };
 
 
 function Detail(props){  
+  
+  let [amAlert, amAlert변경] = useState(true);
+  let [inputData, inputData변경] = useState('');
 
     useEffect(() => {
         let 타이머 = setTimeout(() => {
             amAlert변경(false);
+            return () => {
+              clearTimeout(타이머);
+            }
         }, 2000)
 
         return function 어쩌구(){
@@ -39,7 +45,6 @@ function Detail(props){
     let { id } = useParams();
     let history = useHistory();
 
-    let [amAlert, amAlert변경] = useState(true);
 
     let params = parseInt(props.shoes[id].id);
 
@@ -49,6 +54,7 @@ function Detail(props){
                 {/* <제목 색상="blue">안녕하세요1</제목>
                 <제목 색상={'red'}>안녕하세요2</제목> */}
                 {/* <제목 className="red">안녕하세요</제목> */}
+                <input onChange={(e) => { inputData변경(e.target.value) } }/>
                 {amAlert === true ? 
                     <div className="my-alert">
                         <p>재고가 얼마 남지 않았습니다</p>
