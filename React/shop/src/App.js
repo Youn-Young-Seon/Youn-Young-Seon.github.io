@@ -1,14 +1,20 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap';
 import './App.css';
 import Data from './data.js';
 import Detail from './detail.js'
+import axios from 'axios';
 
 import { Link, Route, Switch } from "react-router-dom";
+
+
+export let 재고context = React.createContext();
+
 
 function App() {
 
   let [shoes, shoes변경] = useState(Data);
+  let [재고, 재고변경] = useState([10, 11, 12]);
 
   return (
     <div className="App">
@@ -38,15 +44,46 @@ function App() {
         <Jumbotron></Jumbotron>
         <div>메인페이지에요</div>
         <div className="container">
+
+          <재고context.Provider value={재고}>
           <div className="row">
-            <Product shoes={shoes}/>      
+            {
+              shoes.map((a, i) => {
+                return <Product shoes={shoes[i]} i={i} key={i} />
+              })
+            }
           </div>
+          </재고context.Provider>
+
+          <button className="btn btn-primary" onClick={() => {
+
+            // axios.post('서버 URL', { id: 'codingapple', pw: 1234})
+            // .then((result) => {})
+
+            // 로딩중이라는 UI 띄움
+            axios.get('https://codingapple1.github.io/shop/data2.json')
+            .then((result) => {
+              // 로딩중이라는 UI 안보이게 처리           
+              let plusShoes = [...shoes, ...result.data];
+              shoes변경(plusShoes);
+            })
+            .catch(() => {
+              console.log('실패했어요');
+            });
+
+          }}>더보기</button>
         </div>
       </Route>
 
+
       <Route path="/detail/:id">
-        <Detail shoes={shoes}/>
+
+        <재고context.Provider value={재고}>
+        <Detail shoes={shoes} 재고={재고} 재고변경={재고변경}/>
+        </재고context.Provider>
+  
       </Route>
+
 
       {/* <Route path="/:id">
         <div>아무거나적었을때 이거 보여주셈</div>
@@ -61,15 +98,23 @@ function App() {
 }
 
 function Product(props){
-  return(
-    props.shoes.map((a, i) => {
-      return <div className="col-md-4" key={i}>
-              <img src={`https://codingapple1.github.io/shop/shoes${i+1}.jpg`} alt="" width="100%"></img>
-              <h4>{a.title}</h4>
-              <p>{a.content} & {a.price}</p>
-             </div>      
-    })
+
+  let 재고 = useContext(재고context);
+
+  return(    
+     <div className="col-md-4">
+       <img src={`https://codingapple1.github.io/shop/shoes${props.shoes.id + 1}.jpg`} alt="" width="100%"></img>
+       <h4>{props.shoes.title}</h4>
+       <p>{props.shoes.content} & {props.shoes.price}</p>
+       {/* {재고[props.i]} */}
+       <Test></Test>
+     </div>    
   )
+}
+
+function Test(){
+  let 재고 = useContext(재고context);
+  return <p>{재고}</p>
 }
 
 function Jumbotron(){

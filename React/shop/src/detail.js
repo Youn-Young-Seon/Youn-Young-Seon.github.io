@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom";
 import styled from 'styled-components';
 import './Detail.scss'
+import {재고context} from './App.js'
+
 
 
 let 박스 = styled.div`
@@ -22,11 +24,16 @@ color : ${ props => props.색상 };
 
 
 function Detail(props){  
-  
-  let [amAlert, amAlert변경] = useState(true);
-  let [inputData, inputData변경] = useState('');
+
+    let 재고 = useContext(재고context);
+
+    let [amAlert, amAlert변경] = useState(true);
+    let [inputData, inputData변경] = useState('');
 
     useEffect(() => {
+
+        // axios.get()
+
         let 타이머 = setTimeout(() => {
             amAlert변경(false);
             return () => {
@@ -70,7 +77,10 @@ function Detail(props){
               <h4 className="pt-5">{props.shoes[params].title}</h4>
               <p>{props.shoes[params].content}</p>
               <p>{props.shoes[params].price}원</p>
-              <button className="btn btn-danger">주문하기</button> 
+              <Info 재고={props.재고}/>
+              <button className="btn btn-danger" onClick={() => {
+                  {props.재고변경([9, 10, 11])}
+              }}>주문하기</button> &nbsp;
               <button className="btn btn-danger" onClick={ () => {
                 //   history.push('/');
                   history.goBack();
@@ -78,6 +88,12 @@ function Detail(props){
             </div>
           </div>
         </div> 
+    )
+}
+
+function Info(props){
+    return(
+        <p>재고: {props.재고[0]}</p>
     )
 }
 
