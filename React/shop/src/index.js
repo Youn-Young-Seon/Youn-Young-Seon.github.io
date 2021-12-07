@@ -20,17 +20,21 @@ function reducer2(state = alert초기값, 액션){
 }
 
 let 초기값 = [
-  { id: 0, name: '멋진신발', quan: 2},
-  { id: 1, name: '멋진신발2', quan: 1 }
+  // { id: 0, name: '멋진신발', quan: 2},
+  // { id: 1, name: '멋진신발2', quan: 1 }
 ] 
 
 function reducer(state = 초기값, 액션){ // redux 수정
   if(액션.type === '항목추가'){
-
     let copy = [...state];
+    for(let i=0; i<state.length; i++){
+      if(state[i].id === 액션.payload.id){
+        copy[i].quan += 액션.payload.quan;          
+        return copy
+      }
+    }
     copy.push(액션.payload);
     return copy
-
   }else if(액션.type === '수량증가'){
     let copy = [...state];    
     copy[0].quan++;

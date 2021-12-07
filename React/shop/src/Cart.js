@@ -12,7 +12,7 @@ function Cart(props){
                     <th>수량</th>
                     <th>변경</th>
                 </tr>
-                {
+                {                    
                     props.state.map((a, i) =>{
                     return(
                         <tr key={i}>
@@ -45,7 +45,7 @@ function Cart(props){
 }
 
 function state를props화(state){
-    console.log(state);
+    // console.log(state);
     return {
         state: state.reducer,
         alert열렸니: state.reducer2

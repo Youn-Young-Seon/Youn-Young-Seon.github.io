@@ -79,7 +79,7 @@ function App() {
       <Route path="/detail/:id">
 
         <재고context.Provider value={재고}>
-        <Detail shoes={shoes} 재고={재고} 재고변경={재고변경}/>
+          <Detail shoes={shoes} 재고={재고} 재고변경={재고변경}/>
         </재고context.Provider>
   
       </Route>
@@ -110,8 +110,8 @@ function Product(props){
        <img src={`https://codingapple1.github.io/shop/shoes${props.shoes.id + 1}.jpg`} alt="" width="100%"></img>
        <h4>{props.shoes.title}</h4>
        <p>{props.shoes.content} & {props.shoes.price}</p>
-       {/* {재고[props.i]} */}
-       <Test></Test>
+       {재고[props.i]}
+       {/* <Test></Test> */}
      </div>    
   )
 }

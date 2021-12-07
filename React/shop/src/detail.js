@@ -33,9 +33,9 @@ function Detail(props){
     let [inputData, inputData변경] = useState('');
 
     let [누른탭, 누른탭변경] = useState(0);
-    let [스위치, 스위치변경] = useState(false);
+    let [스위치, 스위치변경] = useState(false);    
 
-    useEffect(() => {
+    useEffect(() => {        
 
         // axios.get()
 
@@ -49,7 +49,7 @@ function Detail(props){
         return function 어쩌구(){
             // 실행할코드~~~
         }
-    });
+    }, []);
 
     // useEffect(() => {});
     // useEffect(() => {});
@@ -82,11 +82,16 @@ function Detail(props){
               <h4 className="pt-5">{props.shoes[params].title}</h4>
               <p>{props.shoes[params].content}</p>
               <p>{props.shoes[params].price}원</p>
-              <Info 재고={props.재고}/>
+              <Info 재고={props.재고[params]}/>
               <button className="btn btn-danger" onClick={() => {
                   
                   props.재고변경([9, 10, 11]);
-                  props.dispatch({type: '항목추가', payload: {id: 2, name: '새로운상품', quan: 1} });
+                  props.dispatch({type: '항목추가', 
+                                  payload: {
+                                      id: params, 
+                                      name: props.shoes[params].title, 
+                                      quan: props.재고[params]
+                                    } });
                   history.push('/cart');
 
               }}>주문하기</button> &nbsp;
@@ -143,12 +148,12 @@ function TabContent(props){
 
 function Info(props){
     return(
-        <p>재고: {props.재고[0]}</p>
+        <p>재고: {props.재고}</p>
     )
 }
 
 function state를props화(state){
-    console.log(state);
+    // console.log(state);
     return {
         state: state.reducer,
         alert열렸니: state.reducer2
