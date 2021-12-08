@@ -20,10 +20,13 @@ function Cart(props){
                             <td>{a.name}</td>
                             <td>{a.quan}</td>
                             <td><button className="btn btn-primary" onClick={() => {
-                                props.dispatch({ type: '수량증가' })
+                                props.dispatch({ type: '수량증가', payload: { 
+                                                                    status: {i} 
+                                                                    } 
+                                                })
                             }}>+</button> &nbsp;
                             <button className="btn btn-danger" onClick={() => {
-                                props.dispatch({ type: '수량감소' })
+                                props.dispatch({ type: '수량감소', payload: { status: {i} } })
                             }}>-</button>
                             </td>                            
                         </tr>
