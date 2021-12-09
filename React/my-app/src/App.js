@@ -3,9 +3,8 @@ import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap';
 import './App.css';
 import Data from './data.js';
 import axios from 'axios';
-import { Link, Route, Switch } from "react-router-dom";
+import { Link, Route, Switch, useHistory } from "react-router-dom";
 import Cart from './Cart.js'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import Test from './test.js'
 // import Detail from './detail.js'
 let Detail = lazy(() => { return import ('./detail.js') });
