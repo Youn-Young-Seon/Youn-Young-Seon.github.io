@@ -15,9 +15,11 @@ export let 재고context = React.createContext();
 
 
 function App() {
-
+  
   let [shoes, shoes변경] = useState(Data);
   let [재고, 재고변경] = useState([10, 11, 12]);
+  let [recent, recentSet] = useState(false);
+  let [reset, resetSet] = useState(true);
 
   return (
     <div className="App">
@@ -57,6 +59,8 @@ function App() {
             }
           </div>
           </재고context.Provider>
+
+          <Recent shoes={shoes} recent={recent} recentSet={recentSet} reset={reset} resetSet={resetSet}></Recent>
 
           <button className="btn btn-primary" onClick={() => {
 
@@ -108,6 +112,35 @@ function App() {
 
     </div>
   );
+}
+
+function Recent(props){  
+
+  let obj = JSON.parse(localStorage.getItem('shoes'));  
+
+  !obj ? props.recentSet(false) : props.recentSet(true);
+
+  function reset(){ 
+    localStorage.removeItem('shoes');   
+    props.reset ? props.resetSet(false) : props.resetSet(true);    
+  }
+
+  return(
+    <div>
+      { props.recent === true      
+        ? <div className='recent-product'>
+            { obj !== null
+              ? obj.map((a) => {
+                return <div className='recent-product-detail'>{props.shoes[a].title}</div>
+              })
+              : <div className='recent-product-detail'></div>
+            }
+            <button className='btn btn-danger' onClick={reset}>X</button>
+          </div>          
+        : null
+      }
+    </div>
+  )
 }
 
 function Product(props){

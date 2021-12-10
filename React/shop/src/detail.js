@@ -35,9 +35,7 @@ function Detail(props){
     let [누른탭, 누른탭변경] = useState(0);
     let [스위치, 스위치변경] = useState(false);    
 
-    useEffect(() => {        
-
-        // axios.get()
+    useEffect(() => {                
 
         let 타이머 = setTimeout(() => {
             amAlert변경(false);
@@ -50,16 +48,34 @@ function Detail(props){
             // 실행할코드~~~
         }
     }, []);
-
+    
     // useEffect(() => {});
     // useEffect(() => {});
-
+    
     let { id } = useParams();
     let history = useHistory();
-
-
+    
+    
     let params = parseInt(props.shoes[id].id);
 
+    useEffect(() => {        
+
+        let shoesCheck = localStorage.getItem('shoes');
+        let shoesArr = [];
+        shoesArr.push(params);
+        
+        if(!shoesCheck){            
+            localStorage.setItem('shoes', JSON.stringify(shoesArr));
+        }else{             
+            let parseArr = JSON.parse(localStorage.getItem('shoes'));         
+            parseArr.push(params);
+            let arrSet = new Set(parseArr);
+            let newArr = [...arrSet];
+            localStorage.setItem('shoes', JSON.stringify(newArr));
+        }
+        // localStorage.setItem('shoes', params)
+    }, []);
+    
     return(
         <div className="container">
             <박스>
