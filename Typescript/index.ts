@@ -182,46 +182,176 @@
 // }
 // 내함수(자료.name);
 
-type 함수타입 = (a :string) => number;
-let 함수 :함수타입 = function(a){
-    return 1;
-}
-type 회원정보타입 = {
-    name: string,
-    plusOne: (a: number) => number,
-    changeName: () => void
-};
-let 회원정보 :회원정보타입 = {
-    name: 'kim',
-    plusOne(a: number): number{
-        return a + 1;
-    },
-    changeName: () => {
-        console.log('안녕');
-    }
-};
-회원정보.plusOne(1);
-회원정보.changeName();
+// type 함수타입 = (a :string) => number;
+// let 함수 :함수타입 = function(a){
+//     return 1;
+// }
+// type 회원정보타입 = {
+//     name: string,
+//     plusOne: (a: number) => number,
+//     changeName: () => void
+// };
+// let 회원정보 :회원정보타입 = {
+//     name: 'kim',
+//     plusOne(a: number): number{
+//         return a + 1;
+//     },
+//     changeName: () => {
+//         console.log('안녕');
+//     }
+// };
+// 회원정보.plusOne(1);
+// 회원정보.changeName();
 
 
-type publicFunc = (str: string) => number | string;
+// type publicFunc = (str: string) => number | string;
 
-function cutZero(str: string) :string{
-    if(str[0] === '0'){
-        return str.slice(1, str.length);
-    }else{
-        return str;
-    }
-}
+// function cutZero(str: string) :string{
+//     if(str[0] === '0'){
+//         return str.slice(1, str.length);
+//     }else{
+//         return str;
+//     }
+// }
 
-function removeDash(str: string) :number{
-    let newStr: string = str.replace(/-/g, '');    
-    let strToNum: number = parseInt(newStr);    
-    return strToNum;
-}
+// function removeDash(str: string) :number{
+//     let newStr: string = str.replace(/-/g, '');    
+//     let strToNum: number = parseInt(newStr);    
+//     return strToNum;
+// }
 
-function pureNumber(str :string, func1 :publicFunc, func2 :publicFunc): number{
-    // let resultStr = func1(str) as string;    
-    return func2(func1(str) as string) as number;    
-}
+// function pureNumber(str :string, func1 :publicFunc, func2 :publicFunc): number{
+//     // let resultStr = func1(str) as string;    
+//     return func2(func1(str) as string) as number;    
+// }
 
+// let 제목 = document.querySelector('#title'); //as Element;
+// if(제목 != null){
+//     제목.innerHTML = '반가우요';
+// }
+// if(제목 instanceof Element){
+//     제목.innerHTML = '반가우요';
+// }
+// 제목.innerHTML = '반가우요';
+// if(제목?.innerHTML != undefined){
+//     제목.innerHTML = '반가우요';
+// }
+
+// let 링크 = document.querySelector('.link');
+// if(링크 instanceof HTMLAnchorElement){
+//     링크.href = 'https://kakao.com'
+// }
+
+// let 버튼 = document.querySelector('#button');
+// 버튼?.addEventListener('click', function(){
+
+// })
+
+// let changeIMG = document.querySelector('#image');
+// if(changeIMG instanceof HTMLImageElement){
+//     changeIMG.src = 'new.jpg';
+// }    
+
+
+// let changeAnchor = document.querySelectorAll('.naver');
+// changeAnchor.forEach((a) => {
+//     if(a instanceof HTMLAnchorElement){
+//         a.href = 'https://kakao.com'
+//     }
+// })
+
+// class Person{
+//     name :string
+//     constructor(){
+//         this.name = 'kim';    
+//     }
+// }
+
+// let 사람1 = new Person();
+// let 사람2 = new Person();
+
+
+// class Car{
+//     model;
+//     price;
+//     constructor(model :string, price :number){
+//         this.model = model;
+//         this.price = price;
+//     }
+
+//     tax() :number{
+//         return (this.price / 10);
+//     }
+// }
+
+// let car1 = new Car('소나타', 3000);
+
+// console.log(car1);
+// console.log(car1.tax());
+
+
+// class Word{
+//     num :number[];
+//     str :string[];
+//     constructor(...rest :(number|string)[]){
+//         this.num = [];
+//         this.str = [];        
+//         rest.forEach((a) => {
+//             if(typeof a === 'number'){
+//                 this.num.push(a);
+//             }else if(typeof a === 'string'){
+//                 this.str.push(a);
+//             }else{}            
+//         });
+//     }
+// }
+
+// let obj = new Word('kim', 3, 5, 'park', 8, 9, 1, 'ddd', '123', 324);
+// console.log(obj.num);
+// console.log(obj.str);
+
+
+// type Animal = {name: string}
+// type Cat = {age: number} & Animal
+
+// interface Student {
+//     name: string
+// }
+// interface Teacher extends Student {    
+//     age: number
+// }
+
+// let 학생: Student = {name: 'kim'}
+// let 선생: Teacher = {name: 'kim', age: 20 }
+
+
+// interface Product {
+//     brand: string,
+//     serialNumber: number,
+//     model: string[]
+// }
+// let 상품 :Product = { brand: 'Samsung', serialNumber: 1360, model: ['TV', 'phone']};
+
+// interface Card{
+//     card?: boolean
+// }
+// interface Cartegory extends Card{
+//     product: string,
+//     price: number
+// }
+// let 장바구니 :Cartegory[] = [{ product: '청소기', price: 7000, card: false}, {product: '삼다수', price: 800}];
+
+// interface inter{
+//     plus: (a: number, b :number) => number,
+//     minus: (a: number, b :number) => number
+// }
+// let obj :inter = {
+//     plus: function(a, b) :number{
+//         return a + b;
+//     },
+//     minus: (a, b) => {
+//         return a - b;
+//     }
+// }
+// obj.plus(10, 5);
+// obj.minus(10, 5);
