@@ -287,3 +287,157 @@
 // }
 // obj.plus(10, 5);
 // obj.minus(10, 5);
+// let person = {student: true, age: 20}
+// function 함수({student, age} :{student: boolean, age :number}){
+//     console.log(student, age);
+// }
+// 함수({student: true, age: 20});
+// function 최대값구하기(...rest :number[]) :number{    
+//     let newArr = rest.sort((a, b) => {
+//         if(a > b){
+//             return -1;
+//         }else if(b > a){
+//             return 1;
+//         }else{
+//             return 0
+//         }
+//     });
+//     return newArr[0];
+// }
+// 최대값구하기(12,25,32,42,54,62,25, 24, 35, 55);
+// interface Func {
+//     user: string, 
+//     comment: number[], 
+//     admin: boolean
+// }
+// function 함수({user, comment, admin} :Func) :void{    
+//     console.log(user, comment, admin);
+// }
+// 함수({ user : 'kim', comment : [3,5,4], admin : false })
+// type arr = (number|string|boolean)[]
+// function 함수([a, b, c]:arr) :void{
+//     console.log(a, b, c);
+// }
+// 함수( [40, 'wine', false] );
+// function 함수(a :string| undefined){
+//     if(a && typeof a === 'string'){
+//     }else{
+//     }
+// }
+// type Fish = {swim :string}
+// type Bird = {fly :string}
+// function 함수(animal :Fish|Bird){
+//     if ('swim' in animal){
+//         animal.swim
+//     }
+// }
+// class User {
+//     name: string
+//     private familyName :string = 'kim'
+//     constructor(a :string){
+//         this.name = a + this.familyName;
+//     }
+//     이름변경함수(){
+//         this.familyName = 'park';
+//     }
+// }
+// let 유저1 = new User('민수');
+// 유저1.이름변경함수()
+// class Person{    
+//     constructor(public name :string){
+//     }
+// }
+// let 자식 = new Person('kim');
+// console.log(자식);
+// class User{
+//     protected x = 10;
+// }
+// class NewUser extends User{
+//     dothis(){
+//         this.x = 20;
+//     }
+// }
+// class User{
+//     static x = 10;
+//     y = 20;
+// }
+// let 자식 = new User();
+// console.log(자식.x);
+// console.log(User.x);
+// class User{
+//     static skill = 'js';
+//     intro = User.skill + '전문가입니다.';
+// }
+// let 철수 = new User();
+// console.log(철수);
+// User.skill = 'ts';
+// let 철수2 = new User();
+// console.log(철수2);
+// class User{
+//     private static x = 10; // class 내부에서 static하게 사용
+//     public static y = 20; // 어디서나 static하게 사용
+//     protected z = 30; // extends(상속) 시에 사용
+// }
+// class User {
+//     private static x = 10;
+//     public static y = 20;
+//     static addOne(param: number){
+//         User.x += param;
+//     }
+//     static printX() :void{
+//         console.log(User.x);
+//     }
+//     // static addOne = function(param: number){
+//     //     User.x += param;
+//     // }
+//     // static printX = function() :void{
+//     //     console.log(User.x);
+//     // }
+// }
+// User.addOne(3) //이렇게 하면 x가 3 더해져야함
+// User.addOne(4) //이렇게 하면 x가 4 더해져야함
+// User.printX()  //이렇게 하면 콘솔창에 x값이 출력되어야함
+// console.log(new User);
+var Square = /** @class */ (function () {
+    function Square(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        this.x = x;
+        this.y = y;
+        this.color = color;
+    }
+    Square.prototype.draw = function () {
+        var space = document.querySelector('.space');
+        var box = document.createElement('div');
+        box.classList.add('box');
+        if (space instanceof Element) {
+            space.append(box);
+        }
+        var searchBox = document.querySelector('.box');
+        if (searchBox instanceof HTMLDivElement) {
+            searchBox.style.position = 'absolute';
+            searchBox.style.top = this.random().randomY + 'px';
+            searchBox.style.left = this.random().randomX + 'px';
+            searchBox.style.width = this.x + 'px';
+            searchBox.style.height = this.y + 'px';
+            searchBox.style.backgroundColor = this.color;
+        }
+    };
+    Square.prototype.random = function () {
+        var randomNum = Math.random();
+        var randomSpace = {
+            randomX: randomNum * 400 - this.x,
+            randomY: randomNum * 400 - this.y
+        };
+        return randomSpace;
+    };
+    return Square;
+}());
+var 네모 = new Square(30, 30, 'red');
+네모.draw();
+네모.draw();
+네모.draw();
+네모.draw();
+네모.draw();
+네모.draw();
