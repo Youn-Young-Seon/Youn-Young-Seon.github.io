@@ -398,46 +398,94 @@
 // User.addOne(4) //이렇게 하면 x가 4 더해져야함
 // User.printX()  //이렇게 하면 콘솔창에 x값이 출력되어야함
 // console.log(new User);
-var Square = /** @class */ (function () {
-    function Square(x, y, color) {
-        this.x = x;
-        this.y = y;
-        this.color = color;
-        this.x = x;
-        this.y = y;
-        this.color = color;
+// class Square{
+//     constructor(private x :number, private y :number, private color :string){
+//         this.x = x;
+//         this.y = y;
+//         this.color = color;
+//     }
+//     draw(){
+//         let space = document.querySelector('.space');
+//         let box = document.createElement('div');
+//         box.classList.add('box');
+//         if(space instanceof Element){
+//             space.append(box);
+//         }        
+//         // let searchBox = document.querySelector('.box');
+//         let searchBox = space?.lastElementChild;
+//             if(searchBox instanceof HTMLDivElement){
+//                 searchBox.style.position = 'absolute';
+//                 searchBox.style.top = this.random().randomY + 'px';
+//                 searchBox.style.left = this.random().randomX + 'px';
+//                 searchBox.style.width = this.x + 'px';
+//                 searchBox.style.height = this.y + 'px';
+//                 searchBox.style.backgroundColor = this.color;
+//         }
+//     }
+//     private random(){
+//         let randomNum = Math.random();
+//         let randomSpace = {
+//             randomX: randomNum * 400,
+//             randomY: randomNum * 400
+//         }
+//         return randomSpace;
+//     }
+// }
+// let 네모 = new Square(30, 30, 'red');
+// 네모.draw();
+// 네모.draw();
+// 네모.draw();
+// 네모.draw();
+// 네모.draw();
+// 네모.draw();
+// import {이름, 나이, Name} from './a'
+// console.log(이름);
+// let 변수 :Name = 'park';
+// import {Car, Bike} from './a'
+// let car :Car = {
+//     wheel: 4,
+//     model: 'car'
+// }
+// let bike :Bike = {
+//     wheel: 2,
+//     model: 'bike'
+// }
+// import {jaju} from './a'
+// let obj = {
+//     text: 'text',
+//     number: 'number'
+// }
+// let test :jaju = (param) => {
+//     console.log(param);
+// }
+// test(obj);
+// namespace namespace1{
+//     export type Dog = string;
+// }
+// namespace namespace2{    
+//     export interface Dog { name : string };
+// }
+// let dog1 :namespace1.Dog = 'bark';
+// let dog2 :namespace2.Dog = { name : 'paw' }
+// function 함수<T extends string|string[]>(x :T){
+//     return x.length;
+// }
+// 함수<string>('hello');
+// 함수<string[]>(['kim', 'park']);
+// interface Animal{
+//     name: string,
+//     age: number
+// }
+// function jsonToObj<T>(x :string) :T{
+//     return JSON.parse(x);
+// }
+// let data = '{"name" : "dog", "age" : 1 }';
+// let result = jsonToObj<Animal>(data);
+var Person = /** @class */ (function () {
+    function Person(a) {
+        this.name = a;
     }
-    Square.prototype.draw = function () {
-        var space = document.querySelector('.space');
-        var box = document.createElement('div');
-        box.classList.add('box');
-        if (space instanceof Element) {
-            space.append(box);
-        }
-        var searchBox = document.querySelector('.box');
-        if (searchBox instanceof HTMLDivElement) {
-            searchBox.style.position = 'absolute';
-            searchBox.style.top = this.random().randomY + 'px';
-            searchBox.style.left = this.random().randomX + 'px';
-            searchBox.style.width = this.x + 'px';
-            searchBox.style.height = this.y + 'px';
-            searchBox.style.backgroundColor = this.color;
-        }
-    };
-    Square.prototype.random = function () {
-        var randomNum = Math.random();
-        var randomSpace = {
-            randomX: randomNum * 400 - this.x,
-            randomY: randomNum * 400 - this.y
-        };
-        return randomSpace;
-    };
-    return Square;
+    return Person;
 }());
-var 네모 = new Square(30, 30, 'red');
-네모.draw();
-네모.draw();
-네모.draw();
-네모.draw();
-네모.draw();
-네모.draw();
+var a = new Person(123);
+a.name; //any 타입이 되었넹 

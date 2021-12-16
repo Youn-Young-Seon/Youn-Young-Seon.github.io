@@ -2,6 +2,7 @@
     "compilerOptions": {
         "target": "ES5",
         "module": "commonjs",
+        // "module": "ex2015",
         "strict": true
     }
 }
