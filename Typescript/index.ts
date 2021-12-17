@@ -600,18 +600,91 @@
 // }
 // 함수('ㅇㅇ', true, 123, '111', 222, '2323');
 
-function 분류기(...rest :(string|number)[]){
-    let str :string[] = []
-    let num :number[] = []
-    let result :[string[], number[]];
-    rest.forEach((a) => {
-        if(typeof a === 'string'){
-            str.push(a);
-        }else if(typeof a === 'number'){
-            num.push(a);
-        }else{}
-    })
-    result = [[...str], [...num]];
-    return result;
-}
-분류기('b', 5, 6, 8, 'a');
+// function 분류기(...rest :(string|number)[]){
+//     let str :string[] = []
+//     let num :number[] = []
+//     let result :[string[], number[]];
+//     rest.forEach((a) => {
+//         if(typeof a === 'string'){
+//             str.push(a);
+//         }else if(typeof a === 'number'){
+//             num.push(a);
+//         }else{}
+//     })
+//     result = [[...str], [...num]];
+//     return result;
+// }
+// 분류기('b', 5, 6, 8, 'a');
+
+
+// console.log(a + 1);
+
+// interface interObj {
+//     [key :string] : string|number;
+// }
+// let obj :interObj = {
+//     model : 'k5',
+//     brand : 'kia',
+//     price : 6000,
+//     year : 2030,
+//     date : '6월',
+//     percent : '5%',
+//     dealer : '김차장'  
+// }
+
+// interface interObj{
+//     'font-size' :number,
+//     [key :string] : number|interObj
+// }
+// let obj :interObj= {
+//     'font-size' : 10,
+//     'secondary' : {
+//         'font-size' : 12,
+//         'third' : {
+//             'font-size' : 14
+//         }
+//     }
+// }
+
+
+// type Bus = {
+//     color : string,
+//     model : boolean,
+//     price : number
+// }
+// type TypeChanger<T> = {
+//     [key in keyof Bus] :string|number
+// }
+// type newType = TypeChanger<Bus>
+// let newBus :newType = {
+//     color : "ddd",
+//     model : 123,
+//     price : "dsff"
+// }
+
+// type Bus = {
+//     color : string,
+//     model : boolean,
+//     price : number
+// }
+// type inputTypeChange<MyType, T> = {
+//     [key in keyof MyType] :T
+// }
+// let obj :inputTypeChange<Bus, string> = {
+//     color : '123',
+//     model : '2222',
+//     price : '555'
+// }
+
+// type FirstItem<T> = T extends any[] ? T[0] : any;
+// let age1 :FirstItem<string[]>;
+// let age2 :FirstItem<number>;
+
+
+// type Age<T> = T extends [string, ...any] ? T[0] : unknown;
+// let age1 :Age<[string, number]>;
+// let age2 :Age<[boolean, number]>;
+
+// type 타입뽑기<T> = T extends (x :infer R) => any ? R : any;
+// type a = 타입뽑기<(x :number) => void> //이러면 number가 이 자리에 남음
+// type b = 타입뽑기<(x :string) => void> //이러면 string이 이 자리에 남음
