@@ -581,12 +581,37 @@
 // let data = '{"name" : "dog", "age" : 1 }';
 // let result = jsonToObj<Animal>(data);
 
-class Person<T> {
-    name;
-    constructor(a :T){
-        this.name = a;
-    }
+// class Person<T> {
+//     name;
+//     constructor(a :T){
+//         this.name = a;
+//     }
+// }
+// let a = new Person(123);
+// a.name //any 타입이 되었넹 
+
+// let 음식 :[string, number, boolean] = ['동서녹차', 4000, true];
+
+// type arrTuple = [string, number, ...boolean[]]
+// let arr :arrTuple = ['동서녹차', 4000, true, false, true, true, false, true]
+
+// function 함수(p1 :string, p2: boolean, ...p3 :(string|number)[]){
+//     console.log(p1, p2, p3);
+// }
+// 함수('ㅇㅇ', true, 123, '111', 222, '2323');
+
+function 분류기(...rest :(string|number)[]){
+    let str :string[] = []
+    let num :number[] = []
+    let result :[string[], number[]];
+    rest.forEach((a) => {
+        if(typeof a === 'string'){
+            str.push(a);
+        }else if(typeof a === 'number'){
+            num.push(a);
+        }else{}
+    })
+    result = [[...str], [...num]];
+    return result;
 }
-let a = new Person(123);
-a.name //any 타입이 되었넹 
-  
+분류기('b', 5, 6, 8, 'a');
