@@ -36,13 +36,18 @@
                 <p>글번호: <%= posts[i]._id %></p>
                 <h4>할일 제목: <%= posts[i].제목 %></h4>
                 <p>할일 마감날짜: <%= posts[i].날짜 %></p>
-                <button class="delete btn btn-danger" data-id="<%= posts[i]._id %>">삭제</button>
-                <button class="delete btn btn-danger" data-id="<%= posts[i]._id %>">수정</button>
+                <form action="/chat" method="POST">
+                  <button class="delete btn btn-danger" data-id="<%= posts[i]._id %>">삭제</button>
+                  <button class="modify btn btn-danger" data-id="<%= posts[i]._id %>">수정</button>
+                  <input type="hidden" name="roomId" value="<%= posts[i]._id %>">
+                  <input type="hidden" name="writer" value="<%= posts[i].작성자 %>">
+                  <input type="hidden" name="title" value="<%= posts[i]._id %>번 글 채팅방">
+                  <button type="submit" class="chatting btn btn-danger" data-id="<%= posts[i]._id %>">채팅하기</button>
+                </form>
             </li>
           <% } %>
         </ul>
-      </div>
-        
+      </div>        
     
     <script>
       
