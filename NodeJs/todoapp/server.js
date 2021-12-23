@@ -253,25 +253,17 @@ app.get('/image/:imageName', function(req, res){
 })
 
 
-app.get('/chat', function(req, res){    
+app.get('/chat', function(req, res){     
     db.collection('chatroom').find().toArray(function(error, result){
-        // for(let i=0; i<result.length; i++){
-        //     for(let j=0; i<result.member[j]; j++){
-        //         if(result.member[j] == req.user._id){
-        //             chatArr += 
-        //         }
-        //     }
-        // }
         let chatArr = result.filter((a) => {
             for(let i=0; i<a.member.length; i++){
-                if(a.member[i] == req.user._id){
+                if(a.member[i].toString() == req.user._id.toString()){
                     return a;
                 }
             }
         })
-        console.log(chatArr);
-    })
-    res.render('chat.ejs');
+        res.render('chat.ejs', {chatting: chatArr});
+    })    
 })
 
 app.post('/chat', 로그인했니, function(req, res){    
@@ -280,9 +272,17 @@ app.post('/chat', 로그인했니, function(req, res){
         member: [ObjectId(req.body.writer), req.user._id],
         date: new Date()
     }
-    db.collection('chatroom').insertOne(data, function(error, result){
-        if(result){
-            res.redirect('/chat')
+    db.collection('chatroom').find({member: [ObjectId(req.body.writer), req.user._id]}).toArray(function(error, result){        
+        if(result.length !== 0){
+            if(result){
+                res.redirect('/chat')
+            }
+        }else{            
+            db.collection('chatroom').insertOne(data, function(error, result){
+                if(result){
+                    res.redirect('/chat')
+                }
+            })
         }
     })
 })
