@@ -16,6 +16,10 @@ require('dotenv').config();
 
 const {ObjectId} = require('mongodb');
 
+const http = require('http').createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(http);
+
 // var db;
 // MongoClient.connect('mongodb+srv://admin:admin123@cluster0.99oln.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', function(에러, client){
 //     // 연결되면 할 일
@@ -42,10 +46,31 @@ MongoClient.connect(process.env.DB_URL, function(에러, client){
     //     console.log('저장완료');
     // });
 
-    app.listen(process.env.PORT, function(){
+    http.listen(process.env.PORT, function(){
         console.log('listening on 8080')
     });
+})
 
+
+app.get('/socket', function(req, res){
+    res.render('socket.ejs');
+})
+
+io.on('connection', function(socket){
+    console.log('유저 접속 됨')
+
+    socket.on('joinroom', function(data){
+        socket.join('room1');
+    });
+
+    socket.on('room1-send', function(data){        
+        io.to('room1').emit('broadcast', data);
+    });
+
+    socket.on('user-send', function(data){
+        // io.to(socket.id).emit('broadcast', data);
+        io.emit('broadcast', data);
+    })
 })
 
 
@@ -262,27 +287,67 @@ app.get('/chat', function(req, res){
                 }
             }
         })
+        console.log(chatArr)
         res.render('chat.ejs', {chatting: chatArr});
     })    
 })
 
 app.post('/chat', 로그인했니, function(req, res){    
     let data = {
-        title: req.body.title,
+        title: req.body.title + '번 글 채팅방',
         member: [ObjectId(req.body.writer), req.user._id],
         date: new Date()
     }
-    db.collection('chatroom').find({member: [ObjectId(req.body.writer), req.user._id]}).toArray(function(error, result){        
+    db.collection('chatroom').find({member: [ObjectId(req.body.writer), req.user._id]}).toArray(function(error, result){
+        console.log(result)
         if(result.length !== 0){
-            if(result){
-                res.redirect('/chat')
-            }
+            res.redirect('/chat')            
         }else{            
             db.collection('chatroom').insertOne(data, function(error, result){
-                if(result){
-                    res.redirect('/chat')
-                }
+                res.redirect('/chat')
             })
         }
     })
 })
+
+
+app.post('/message', 로그인했니, function(req, res){
+    var 저장할거 = {
+        parent: req.body.parent,
+        content: req.body.content,
+        userid: req.user._id,
+        data: new Date()
+    }
+
+    db.collection('message').insertOne(저장할거).then(() => {
+        console.log('DB저장성공');
+        res.send('DB저장성공');
+    })
+})
+
+app.get('/message/:parentid', 로그인했니, function(요청, 응답){
+
+    응답.writeHead(200, {
+      "Connection": "keep-alive",
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache",
+    });
+  
+    db.collection('message').find({ parent: 요청.params.parentid }).toArray()
+    .then((result) => {
+        응답.write('event: test\n');
+        응답.write('data: '+ JSON.stringify(result) + '\n\n');
+    })
+    
+    const 찾을문서 = [
+        { $match: { 'fullDocument.parent': 요청.params.parentid } }
+    ];
+    
+    const changeStream = db.collection('message').watch(찾을문서);
+    changeStream.on('change', result => {
+        console.log(result.fullDocument);
+        var 추가된문서 = [result.fullDocument];
+        응답.write('event: test\n');
+        응답.write(`data: ${JSON.stringify(추가된문서)}\n\n`);
+    });
+  });
