@@ -1,0 +1,337 @@
+@font-face {
+    font-family: 'Gothic';
+    src: url(/font/gothic.ttf);
+}
+
+*{
+    font-family: 'Gothic';
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+button{
+    background-color: #444445;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+img{
+    border: none;
+}
+
+.btn{
+    width: 120px;
+    height: 50px;
+    color: white;
+    font-size: 16px;
+}
+
+.btn:hover{
+    background-color: cornflowerblue;
+}
+
+.lg-white{
+    color: white;
+    font-size: 32px;
+}
+
+.mi-white{
+    color: white;
+    font-size: 24px;
+}
+
+.sm-white{
+    color: white;
+    font-size: 16px;
+}
+
+.lg-black{
+    color: black;
+    font-size: 32px;
+}
+
+.mi-black{
+    color: black;
+    font-size: 24px;
+}
+
+.sm-black{
+    color: black;
+    font-size: 16px;
+}
+
+.co-gc{
+    color: #4e61c0;
+}
+
+.mg-bot-16{
+    margin-bottom: 16px;
+}
+
+/********************************************************/
+
+.landing-head{
+    padding: 50px;
+    width: 100%;
+    height: 500px;
+    background: #569EDD;
+    background: -moz-linear-gradient(top, #569EDD 0%, #4f62c0 100%);
+    background: -webkit-linear-gradient(top, #569EDD 0%, #4f62c0 100%);
+    background: linear-gradient(to bottom, #569EDD 0%, #4f62c0 100%);
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.landing-head-img-wrap{
+    width: 400px;
+    float: right;
+    position: absolute;
+    bottom: 0px;
+    right: 120px;
+}
+
+.landing-head-phone{
+    width: 100%;
+    background-size: cover;
+}
+
+
+.landing-portfolio{
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+
+.landing-offer{
+    width: 100%;    
+    height: 350px;
+    background-color: #4e61c0;
+    text-align: center;
+    padding: 50px;
+    margin-bottom: 40px;
+}
+
+.landing-offer-flex{
+    margin-top: 24px;
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+.landing-offer-icon{
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;  
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.landing-offer-icon i{
+    padding-top: 35px;
+}
+
+
+.landing-do{
+    text-align: center;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.landing-do-wrap{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+.landing-do-img{    
+    width: 50%;
+    float: left;
+    position: relative;    
+}
+
+.landing-do-cover{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    transition: all 0.8s;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+
+.landing-do-cover:hover{
+    border: 25px solid white;
+}
+
+.landing-do-img img{
+    width: 100%;
+    background-size: cover;    
+}
+
+.landing-do-img p{
+    position: absolute;
+    left: 40px;
+}
+
+.landing-do-img p:nth-child(odd){
+    top: 50px;
+}
+
+.landing-do-img p:nth-child(even){
+    top: 100px;
+}
+
+
+.landing-footer{
+    width: 100%;
+    height: 150px;
+}
+
+.landing-footer-flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing-footer-img{
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    background-color: #4e61c0;
+    margin: 0 20px 0 20px;
+    position: relative;
+}
+
+.landing-footer-img i{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .btn{
+        width: 120px;
+        height: 50px;
+        color: white;
+        font-size: 16px;
+    }
+    
+    .lg-white{
+        color: white;
+        font-size: 32px;
+    }
+    
+    .mi-white{
+        color: white;
+        font-size: 24px;
+    }
+    
+    .sm-white{
+        color: white;
+        font-size: 16px;
+    }
+    
+    .lg-black{
+        color: black;
+        font-size: 32px;
+    }
+    
+    .mi-black{
+        color: black;
+        font-size: 24px;
+    }
+    
+    .sm-black{
+        color: black;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .btn{
+        width: 80px;
+        height: 30px;
+        color: white;
+        font-size: 8px;
+    }
+    
+    .lg-white{
+        color: white;
+        font-size: 24px;
+    }
+    
+    .mi-white{
+        color: white;
+        font-size: 12px;
+    }
+    
+    .sm-white{
+        color: white;
+        font-size: 8px;
+    }
+    
+    .lg-black{
+        color: black;
+        font-size: 16px;
+    }
+    
+    .mi-black{
+        color: black;
+        font-size: 12px;
+    }
+    
+    .sm-black{
+        color: black;
+        font-size: 8px;
+    }    
+
+
+    .landing-head{
+        text-align: center;
+    }
+    
+    .landing-head-img-wrap{
+        width: 250px;
+        float: right;
+        position: absolute;
+        bottom: 0px;
+        right: 70px;
+    }
+
+    .landing-offer{
+        width: 100%;
+        height: 700px;
+        background-color: #4e61c0;
+        text-align: center;
+        padding: 50px;
+        margin-bottom: 40px;
+    }
+    
+    .landing-offer-flex{
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    
+    .landing-offer-icon{
+        width: 90px;
+        height: 90px;
+        border-radius: 45px;  
+        background-color: white;
+        margin: 8px auto 8px auto;
+    }
+    
+    .landing-offer-icon i{
+        padding-top: 25px;        
+    }
+}

@@ -1,0 +1,692 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+
+    <!-- <button id="버튼">버튼이에요</button> -->
+
+    <!-- <div style="display : none">모달창0</div>
+    <div style="display : none">모달창1</div>
+    <div style="display : none">모달창2</div>
+
+    <button>버튼0</button>
+    <button>버튼1</button>
+    <button>버튼2</button> -->
+
+    <script>
+
+    // chap.1
+       
+    // function 생성자or함수(){
+    //     this.테스트 = "kim";
+    //     console.log(this);
+	// }        
+
+	// new 생성자or함수(); // 생성자or함수 {}
+    // 생성자or함수(); // Window
+
+    // document.getElementById('버튼').addEventListener('click', function(e){
+    //     console.log(this); // document.getElementById('버튼') (4)
+    //     var 어레이 = [1,2,3];
+    //     어레이.forEach(function(){
+    //         console.log(this); // window, window, window (1)
+    //     });
+    // });
+
+    // var 오브젝트 = {
+    //     이름들 : ['김', '이', '박'],
+    //     함수 : function(){
+    //         console.log(this); // 오브젝트 (2)
+    //         오브젝트.이름들.forEach(function(){
+    //             console.log(this); // window, window, window (1)
+    //         });
+    //     }
+    // }
+
+    // console.log(오브젝트.함수());
+    
+    // var 오브젝트2 = {
+    //     이름들 : ['김', '이', '박'],
+    //     함수 : function(){
+    //         console.log(this); // 오브젝트2 (2)
+    //         오브젝트2.이름들.forEach( () => {
+    //             console.log(this); // 오브젝트2 (2)
+    //         });
+    //     }
+    // }
+    
+    // console.log(오브젝트2.함수());
+
+    // var 사람 = {
+    //     name: '손흥민',
+    //     sayHi: function(){
+    //         console.log(`안녕 나는 ${this.name}`);
+    //     }
+    // }
+
+    // 사람.sayHi(); // 안녕 나는 손흥민
+
+    
+    // var 자료 = {
+    //     data: [1, 2, 3, 4, 5]
+    // }
+
+    // 자료.전부더하기 = function(){
+    //     var sumArr = this.data;
+    //     var result = 0;
+    //     sumArr.forEach(function(a){
+    //         result += a;
+    //     });
+    //     return result;   
+    // }
+
+    // 자료.전부더하기();
+
+    // document.getElementById('버튼').addEventListener('click', function(){
+    //     let text = this.innerHTML;
+    //     setTimeout(() => {
+    //         console.log(text);
+    //     }, 1000);
+    // });
+
+    // 함수(); // error
+    // function 함수() {
+    //     console.log(안녕);
+    //     let 안녕 = 'Hello!';
+    // }
+
+    // 함수(); // error
+    // var 함수 = function() {
+    //     console.log(안녕);
+    //     var 안녕 = 'Hello!';
+    // }
+
+    // let a = 1;
+    // var 함수 = function() {
+    //     a = 2;
+    // }
+    // console.log(a); // 1
+
+    // let a = 1;
+    // var b = 2;
+    // window.a = 3;
+    // window.b = 4;
+
+    // console.log(a + b); // 1 + 4 = 5
+
+    // for (let i = 1; i < 6; i++) { 
+    //     setTimeout(function() { console.log(i); }, i*1000 ); 
+    // }
+
+    // var pants = 20;
+    // var socks = 100;
+    // `바지${pants} 양말${socks}`;
+
+    // function 해체분석기(문자열, 변수, 변수2){
+    //     변수 = 0;
+    //     if(변수 == 0){
+    //         console.log(문자열[1] + ' 다 팔렸어요' + 문자열[0] + 변수2);
+    //         return;
+    //     }
+    //     console.log(문자열[1] + 변수 + 문자열[0] + 변수2);
+    // };    
+
+    // 해체분석기`바지${pants} 양말${socks}`;
+    
+    // var 버튼들 = document.querySelectorAll('button');
+    // var 모달창들 = document.querySelectorAll('div');
+    
+    // for (let i = 0; i < 3; i++){
+    //     버튼들[i].addEventListener('click', function(){
+    //         모달창들[i].style.display = 'block';
+    //     });
+    // }    
+
+    </script>    
+
+
+    <script>
+        // chap.2
+
+        // var a = [1,2,3];
+        // var b = '김밥';
+        // var c = [...b, ...a];
+        // console.log(c); // ["김", "밥", 1, 2, 3]
+
+        
+        // var a = [1,2,3];
+        // var b = ['you', 'are'];
+        // var c = function(a,b){
+        //     console.log( [[...a], ...[...b]][1] ) // [1, 2, 3], 'you', 'are']
+        // }
+        // c(a,b); // you
+
+
+        // function 함수(a = 5, b = a * 2 ){
+        //     console.log(a + b);
+        //     return 10
+        // }
+        // 함수(3); // 3 + 6 = 9
+
+
+        // function 함수(a = 5, b = a * 2 ){
+        //     console.log(a + b);
+        // }
+        // 함수(undefined, undefined); // 15
+
+
+        // function 어레이(...rest){
+        //     return rest;
+        // }
+        // var newArray = 어레이(1,2,3,4,5);
+        // console.log(newArray);
+
+
+        // var numbers = [2,3,4,5,6,1,3,2,5,5,4,6,7];
+        // var setNumbers = Math.max(...numbers);
+        // console.log(setNumbers);
+
+
+        // function 정렬(...rest){            
+        //     let restArr = [...rest[0]];
+        //     restArr.sort(function(a, b){
+        //         if(a > b){
+        //             return 1;                
+        //         }else if(a < b){
+        //             return -1;
+        //         }else{
+        //             return 0
+        //         }
+        //     });
+
+        //     let newArr = "";
+        //     for(let i=0; i<restArr.length; i++){
+        //         newArr += restArr[i];
+        //     }
+        //     console.log(newArr);
+        // }
+        // 정렬('bear');
+
+
+        // function 글자세기(...rest){
+        //     let object = {};
+        //     let unit = [...rest[0]];
+        //     for(let i=0; i<unit.length; i++){
+        //         if(unit[i] in object){
+        //             object[unit[i]] += 1;
+        //         }else{
+        //             object[unit[i]] = 1;
+        //         }
+        //     }
+        //     console.log(object);
+        // }
+        // 글자세기('aarqwrsfwfqfdwfqcbbb');
+
+        // var 이름1 = { name : '김' };
+        // function 변경(obj){
+        //     // obj = {name: 'park'};
+        //     obj.name  = 'park';
+        // }
+        // 변경(이름1);
+        // console.log(이름1);
+
+        // function product(name, price){
+        //     this.name = name;
+        //     this.price = price;
+        //     this.부가세 = function(){
+        //         console.log(this.price * 0.1);
+        //     }
+        // }
+        // let 상품1 = new product('shirts', 50000);
+        // let 상품2 = new product('pants', 60000);
+        // 상품1.부가세();
+
+        // function Student(name, age){
+        //     this.name = name;
+        //     this.age = age;
+        //     this.sayHi = function(){
+        //         console.log(`안녕 나는 ${name}이야`);
+        //     }
+        // }
+        // var 학생1 = new Student('Kim', 20);
+        // var 학생2 = new Student('Park', 21);
+        // var 학생3 = new Student('Lee', 22);
+        // 학생1.sayHi();
+        // 학생2.sayHi();
+        // 학생3.sayHi();
+
+        // function Parent(){
+        //     this.name = 'Kim';
+        // }
+        // var a = new Parent();
+        // a.__proto__.name = 'Park';
+        // console.log(a.name) // Kim
+        // console.log(Parent.prototype.name) // Park
+
+        // function Student(이름, 나이){
+        //     this.name = 이름;
+        //     this.age = 나이;
+        // }
+        // Student.prototype.sayHi = function(){
+        //     console.log('안녕 나는 ' + this.name + '이야');
+        // }
+        // var 학생1 = new Student('Kim', 20);
+        // 학생1.sayHi(); // Student의 prototype sayHi 함수를 arrow Function으로 정의하면 상위에있는 this를 받아오게되는데 Student()의 상위는 window이다.
+
+        // var arr = [1,2,3,4,3,5,3,4,3,5,6,3,6,4,67,7,6,3,3];
+        // arr.__proto__.remove3 = function(){
+        //     for(let i=0; i<this.length; i++){
+        //         if(this.indexOf(3) == -1){
+        //             return;
+        //         }else{
+        //             this.splice(this.indexOf(3), 1);
+        //         }
+        //     }
+        // }
+        // arr.remove3();
+        // console.log(arr); //[1,2]
+
+        // class Animal{
+        //     constructor(type, color){
+        //         this.type = type;
+        //         this.color = color;
+        //     }
+        //     한살먹기(){
+        //         if(this instanceof Cat){
+        //              this.age += 1; 
+        //         }
+        //     }
+        // }
+        // var 강아지1 = new Animal('말티즈', 'white');
+        // var 강아지2 = new Animal('진돗개', 'brown');
+
+        // class Cat extends Animal{
+        //     constructor(type, color, age){
+        //         super(type, color);
+        //         this.age = age;
+        //     }
+        // }        
+        // var 고양이1 = new Cat('코숏', 'white', 5);
+        // var 고양이2 = new Cat('러시안블루', 'brown', 2);
+
+        // class Unit{
+        //     constructor(공격력 = 5, 체력 = 100){
+        //         this.공격력 = 공격력;
+        //         this.체력 = 체력;
+        //     }
+        //     get battlePoint(){
+        //         return parseInt(this.공격력) + parseInt(this.체력);
+        //     }
+        //     set heal(힐){
+        //         this.체력 += 힐;
+        //     }
+        // }
+        // var 유닛1 = new Unit();
+        // var 유닛2 = new Unit(8, 200);
+        // console.log(유닛1.battlePoint);
+        // console.log(유닛2.battlePoint);
+        // console.log(유닛1.heal = 50);
+        // console.log(유닛2.heal = 30);
+        // console.log(유닛1.battlePoint);
+        // console.log(유닛2.battlePoint);
+
+        // var data = {
+        //     odd: [],
+        //     even: [],
+        //     setData(...add){
+        //         for(let i=0; i<add.length; i++){
+        //             if(add[i] % 2 == 1){
+        //                 this.odd.push(parseInt(add[i]));
+        //             }else{
+        //                 this.even.push(parseInt(add[i]));
+        //             }
+        //         }
+        //     },
+        //     getData(){                
+        //         return [...this.odd, ...this.even].sort(function(a, b){
+        //             if(a > b){
+        //                 return 1;
+        //             }else if(a < b){
+        //                 return -1;
+        //             }else{
+        //                 return 0;
+        //             }
+        //         });
+        //     }            
+        // }
+        // data.setData(4, 87, 34, 54, 545, 233, 2, 3);
+        // console.log(data);
+        // console.log(data.getData());
+    
+    </script>
+
+
+    <script>
+        // var [number, address] = [ 30, 'seoul' ]; // number = 30, address = 'seoul'
+        // //   address 대신 a, 기본 값 20 (값이 있으면 대입 x)
+        // var {address : a , number = 20 } = { address, number }; // a = 'seoul', number = 30
+        // let 신체정보 = {
+        // body: {
+        //         height: 190,
+        //         weight: 70
+        //     },
+        //     size: ["상의 Large", "바지 30인치"],
+        // };
+        // let {
+        //     body: {
+        //         height,
+        //         weight
+        //     },
+        //     size: [ 상의, 하의 ]
+        // } = 신체정보;
+
+        // function 첫째함수(구멍){
+        //     console.log(1);
+        //     구멍();
+        // }
+        // function 둘째함수(){
+
+        // }
+        // 첫째함수(둘째함수);
+        // 첫째함수(function(){
+        //     둘째함수(function(){
+        //         셋째함수(function(){
+
+        //         })
+        //     })
+        // })
+        // 첫째함수().then(function(){
+
+        // }).then(function(){
+
+        // });
+
+        // var 프로미스 = new Promise(function(성공, 실패){
+        //     var 어려운연산 = 1 + 1;
+        //     성공(10);
+        // });
+        // 프로미스.then(function(결과){
+        //     console.log(결과); // 10
+        //     console.log('성공했어요');
+        // }).catch(function(){
+        //     console.log('실패했어요');
+        // }).finally(function(){
+
+        // })
+        
+    </script>
+
+    <!-- <img src="https://codingapple1.github.io/kona/jpg" id="test"> -->
+
+    <script>
+        // var promise = new Promise(function(resolve, reject){            
+        //     var img = document.querySelector('img').addEventListener('load', function(){
+        //         resolve();
+        //     });
+        //     var img = document.querySelector('img').addEventListener('error', function(){
+        //         reject();
+        //     });            
+        // });
+        // promise.then(function(){
+        //     console.log('성공');
+        // }).catch(function(){
+        //     console.log('실패');
+        // })
+
+        // var promise = new Promise(function(resolve, reject){
+        //     $.ajax({
+        //         url: 'https://codingapple1.github.io/hello.txt',
+        //         data: 'GET'
+        //     }).done(function(data){
+        //         resolve(data);
+        //     }).fail(function(e){
+        //         reject(e);
+        //     });
+        // });
+        // promise.then(function(result){
+        //     console.log(result);
+        // }).catch(function(e){
+        //     console.log(e);
+        // })
+
+        // var promise = ajaxPromise('https://codingapple1.github.io/hello.txt');
+        // promise.then(function(result){
+        //     console.log(result);            
+        //     return ajaxPromise('https://codingapple1.github.io/hello2.txt');
+        // }).then(function(result){
+        //     console.log(result);
+        // }).catch(function(e){
+        //     console.log(e);
+        // })
+        // function ajaxPromise(URL){
+        //     return new Promise(function(resolve, reject){
+        //             $.ajax({
+        //                 url: URL,
+        //                 data: 'GET'
+        //             }).done(function(data){
+        //                 resolve(data);
+        //             }).fail(function(e){
+        //                 reject(e);
+        //             });
+        //         });
+        // }
+
+        // async function 더하기(){
+            // return 1 + 1;
+            // var 프로미스 = new Promise(function(성공, 실패){
+                // var 힘든연산 = 1 + 1;
+                // 성공(100);
+                // 실패(100); // error
+                // });
+            // async function 프로미스(){
+                // return 100;
+                // return Promise.reject('실패임'); // 실패 보내기
+            // }            
+            // try{
+            //     var 결과 = await 프로미스();
+            //     console.log(결과);
+            // }catch{
+            //     console.log('프로미스 연산이 잘 안되었군요')
+            // }
+            // 프로미스.then(function(결과){
+            //     console.log('성공했어요')
+            //     console.log(결과);        
+            // });
+        // }
+        // 더하기();
+
+        // 더하기().then(function(결과){
+            // console.log('성공이에요');
+            // console.log(결과);        
+        // });
+
+        // async function 더하기(){
+        //     var 어려운연산 = new Promise((성공, 실패)=>{
+        //         var 결과 = 1 + 1;
+        //         성공(결과);
+        //     });
+        //     어려운연산.then(function(result){
+        //         console.log(result);
+        //     });
+        // }
+        // 더하기();
+
+        // async function 더하기(){
+        //     async function 어려운연산(){                
+        //         return 1 + 1;
+
+        //     }
+        //     var result = await 어려운연산();
+        //     console.log(result);
+        // }
+        // 더하기();
+            // function 첫번째(파람, 함수){
+            //     console.log(파람);
+            //     함수();
+            // }
+
+            // function 두번째(함수){
+            //     console.log(2);
+            //     함수();
+            // }
+
+            // function 세번째(함수){            
+            //     console.log(3);
+            //     함수();
+            // }
+            
+            // console.log('-----------before-----------')
+
+            // 첫번째('오오', function(){
+            //     두번째(function(){
+            //         // 세번째(function(){
+            //             // console.log(4);
+            //         // })
+            //     })
+            // });
+
+            // console.log('-----------after-----------')
+
+            // let 데이터 = [1,2,3,4,5,6,7,8,9];
+            // for (let i of 데이터){
+            //     for(let j of 데이터){                    
+            //         console.log(`${데이터[i-1]} * ${j} = ${(데이터[i-1] * j)}`);
+            //     }
+            // }
+
+            // var products = [
+            //     {
+            //         name1 : 'chair',
+            //         price1 : 7000,
+            //     },
+            //     {
+            //         name2 : 'sofa',
+            //         price : 5000,
+            //     },
+            //     {
+            //         name1 : 'desk',
+            //         price3 : 9000,
+            //     },
+            // ];                    
+            // let newKey;
+            // let newValue;            
+            // for (let item of products) {
+            //     for (let key in item) {
+            //         //마지막글자를 숫자로변환했을 때 NaN이 안나오면 (숫자면)
+            //         if (isNaN(parseInt(key.slice(-1))) == false ) {
+            //             newValue = item[key];
+            //             newKey = key.slice(0, -1); 
+            //             item[newKey] = newValue;
+            //             delete item[key]; 
+            //         }
+            //     }
+            // }
+            // console.log(products);
+            
+            // for(let i of products){            
+            //     let getKey = Object.keys(i);
+            //     for(let j of getKey){                                        
+            //         let lastIndex = parseInt(j.charAt(j.length-1));
+            //         console.log(j);
+            //         console.log(lastIndex);
+            //         if(!isNaN(lastIndex)){                  
+                        
+            //         }
+            //     }                
+            // }
+
+            // var 심볼 = Symbol('심볼');
+            // var weight = Symbol('내 시크릿 몸무게임');
+            // var height = Symbol('시크릿 키');
+            // var person = {name: 'Kim'};
+            // person[weight] = 200;
+            // person[height] = 160;
+            // for(var key in person){
+            //     console.log(person[key]);
+            // }
+    </script>
+
+    <!-- <button>버튼</button>
+
+    <script>
+        var promise = new Promise(function(resolve, reject){
+            document.querySelector('button').addEventListener('click', function(){
+                resolve('성공했어요');
+                // reject();
+            });
+        });
+            
+        async function 클릭(){
+            try{
+                var 결과 = await promise;
+                console.log(결과);
+            }catch{
+                console.log('잘못 되었습니다.');
+            }
+        }
+        클릭();
+    </script> -->
+
+    <!-- <custom-input name="123"></custom-input>
+    <custom-input></custom-input>
+
+    <script>
+            class 클래스 extends HTMLElement{
+                connectedCallback(){
+                    // let 변수 = document.createElement('label');
+                    // this.appendChild(변수);
+                    // let name = this.getAttribute('name');
+                    this.innerHTML = `<label>이메일인풋이에요</label><input>`;
+                }
+                static get observedAttributes(){
+                    return ['name']
+                }
+                attributeChangedCallback(){
+                    console.log(this.getAttribute('name'))
+                }
+            }
+            customElements.define('custom-input', 클래스);
+    </script> -->
+
+    <!-- <div id="mordor"></div>
+    <custom-input></custom-input>
+
+    <template id="template1">
+        <label>이메일을 입력하쇼</label><input>
+        <style>label {color: red}</style>
+    </template>
+
+    <script>
+
+        document.querySelector('#mordor').attachShadow({mode: 'open'});
+        document.querySelector('#mordor').shadowRoot.innerHTML = '<p>심연에서 왔도다</p>';
+
+        class 클래스 extends HTMLElement{
+            connectedCallback(){                
+                this.attachShadow({mode: 'open'});
+                // this.shadowRoot.innerHTML = `<label>이메일을 입력하쇼</label><input>
+                //     <style>label { color: red }</style>`;
+                this.shadowRoot.append(template1.content.cloneNode(true));
+                let el = this.shadowRoot.querySelector('label');
+                el.addEventListener('click', function(){
+                    console.log('클릭함');
+                })
+            }
+        }
+        customElements.define('custom-input', 클래스);
+
+    </script> -->
+
+    <!-- <script type="module">
+        import a from '/library.js'
+        console.log(a);
+        import {d} from '/library.js'
+        console.log(d);
+    </script> -->
+    
+</body>
+</html>

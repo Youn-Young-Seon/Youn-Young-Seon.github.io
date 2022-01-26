@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>369</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <div id="game">
+        <input type="text" id="number">
+        <input type="button" value="체크" id="check">
+    </div>
+
+    <script>
+        document.querySelector('#number').value;
+        document.querySelector('#check').addEventListener('click', function(){
+            game();
+        });
+
+        function game(){            
+
+            // if(document.querySelector('#number').value == 0){
+            //     console.log('0은 안됌');
+            //     return;
+            // }
+            // if(document.querySelector('#number').value % 3 == 0){
+            //     if(document.querySelector('#number').value % 9 == 0){
+            //         console.log('박수x2');
+            //         return;
+            //     }
+            //     console.log('박수');
+            // }else if(document.querySelector('#number').value % 3 != 0){
+            //     console.log('통과');
+            // }
+
+
+            if(document.querySelector('#number').value == 0){
+                console.log('0은 안됌');
+                return;
+            }
+            if(document.querySelector('#number').value.substring(document.querySelector('#number').value.length-1) % 3 == 0){
+                if(document.querySelector('#number').value.substring(document.querySelector('#number').value.length-1) % 9 == 0){
+                    console.log('박수x2');
+                    return;
+                }
+                console.log('박수');
+            }else if(document.querySelector('#number').value.substring(document.querySelector('#number').value.length-1) % 3 != 0){
+                console.log('통과');
+            }
+        }
+        /*****************************************************/
+
+        var 예금액 = 60000;
+        var 미래예금액 = 0;
+        var 이율 = 0;        
+
+        for(var i=0; i<3; i++){
+            if(예금액 < 50000){
+                이율 = (예금액 * 0.15);
+                예금액 += 이율;
+            }else if(예금액 >= 50000){            
+                이율 = (예금액 * 0.2);
+                예금액 += 이율;
+            }
+        }
+        미래예금액 = 예금액;
+        console.log(미래예금액);
+
+        /*****************************************************/
+
+        var 첫커피양 = 360;
+        var 리필된커피 = 0;
+        var 마신커피 = 0;
+        var 리필 = (2/3);        
+
+        마신커피 = 첫커피양 + (첫커피양*리필) + (첫커피양*리필) * 리필;    
+
+        console.log(마신커피);
+    </script>
+</body>
+</html>

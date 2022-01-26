@@ -1,0 +1,310 @@
+/***************************************************/
+
+$main-bg: #fafafa;
+$main-blue: #494cb4;
+
+$redbox: #dc3545;
+
+$basic-size: 16px;
+$basic-mi-size: 20px;
+$basic-lg-size: 28px;
+$basic-xl-size: 42px;
+$basic-box-shadow: 1px 1px 5px gray;
+
+$box-skyblue: #87ceeb;
+$box-green: #40c95b;
+$box-yellow: #ffdb89;
+
+
+h1{
+	font-size: $basic-xl-size;
+}
+
+.search-btn{
+	width: 40px;
+	height: 40px;
+	background-color: black;
+	color: white;
+	border-radius: 0 4px 4px 0;
+	border: none;
+}
+
+.box-shadowing{
+	box-shadow: $basic-box-shadow;
+}
+
+@mixin box-left-color($color) {
+	border-left: solid $color;
+}
+
+.left-skyblue{
+	@include box-left-color($box-skyblue)
+}
+
+.left-blue{
+	@include box-left-color($main-blue)
+}
+
+.left-green{
+	@include box-left-color($box-green)
+}
+
+.left-yellow{
+	@include box-left-color($box-yellow)
+}
+
+/***************************************************/
+
+.header{
+	width: 95%;
+	height: 75px;
+	background-color: white;
+	float: right;
+	box-shadow: $basic-box-shadow;
+	z-index: 1;
+}
+
+.header-container{
+	padding: $basic-size;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header-search-mv{
+	transition: all 1s;
+}
+
+.header-search-mv:focus{
+	width: 500px;
+}
+
+.header-myPage{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: gray;	
+}
+
+.header-myPage div{
+	margin: 0 $basic-size 0 $basic-size;
+}
+
+.header-myPage-box{
+	position: relative;
+}
+
+.header-menu-slot{
+	display: none;
+}
+
+.myPage-redbox{
+	width: 100%;
+	height: 100%;
+	background-color: $redbox;
+	color: white;
+	position: absolute;
+	top: -8px;
+	right: -8px;
+	font-size: 50%;
+	border-radius: 3px;
+}
+
+.myPage-redbox p{
+	position: absolute;
+	left: 4px;
+}
+
+
+
+.sidebar{
+	width: 5%;
+	height: 100%;
+	background-color: $main-blue;
+	float: left;
+	padding: $basic-mi-size;
+	transition: all 1s;
+	position: fixed;
+	z-index: 1;
+}
+
+.sidebar-container{
+	color: white;
+}
+
+.sidebar-container div{	
+	margin-bottom: $basic-lg-size;
+	text-align: center;
+}
+
+.sidebar-container i{		
+	font-size: $basic-mi-size;
+}
+
+.side-bar-icon p{
+	position: fixed;
+	transform: translateX(-100px);
+}
+
+.sidebar:hover {
+	width: 8%;
+	.side-bar-icon p{
+		animation-name: sidebar-move;
+		animation-duration: 1s;
+		animation-fill-mode: forwards;	
+	}
+	.side-bar-icon{
+		text-align: left;
+	}
+}
+
+@keyframes sidebar-move {
+	0%{
+		transform: translateX(-100px);
+	}
+	100%{
+		transform: translateX(30px);
+	}
+}
+
+
+.content{
+	padding: $basic-lg-size;
+	width: 95%;	
+	float: right;
+	background-color: $main-bg;
+}
+
+.content div{
+	margin-bottom: $basic-size;
+}
+
+
+.content-card{
+	width: 100%;
+	height: 100%;
+	padding: $basic-lg-size;	
+	border-radius: 8px;	
+	background-color: white;
+	box-shadow: $basic-box-shadow;
+	// margin-left: auto;
+	// margin-right: auto;
+	display: flex;	
+	justify-content: space-between;
+	align-items: center;
+}
+
+.content-card-text{
+	font-size: $basic-mi-size;
+
+	p{
+		margin-bottom: $basic-size;
+	}
+	
+	strong{
+		font-weight: bold;
+		margin-bottom: $basic-size;
+	}	
+}
+
+.content-card-icon i{
+	color: gray;
+	font-size: $basic-xl-size;
+}
+
+.chart-box{
+	width: 100%; 
+	height: 100%; 
+	margin-right: auto; 
+	margin-left: auto;
+}
+
+
+@media screen and (max-width: 768px) {
+	$basic-size: 8px;
+	$basic-mi-size: 12px;
+	$basic-lg-size: 16px;
+	$basic-xl-size: 28px;
+
+	h1{
+		font-size: $basic-xl-size;
+	}
+
+	.header{
+		height: 60px
+	}
+
+	.header-container{
+		padding-bottom: $basic-mi-size;
+		justify-content: right;
+	}
+
+	.header-search,
+	.header-myPage{
+		display: none;
+	}
+
+	.header-menu-slot{
+		width: $basic-xl-size;
+		height: $basic-xl-size;
+		display: block;
+		position: relative;
+		border: 1px solid #eee;
+		border-radius: 3px;
+	}
+
+	.header-menu-icon{
+		position: absolute;
+		top: 5px;
+		left: 5px;
+	}
+
+	.sidebar{
+		padding-left: $basic-size;
+		padding-right: 24px;
+	}
+
+	.side-bar-icon i{
+		font-size: $basic-lg-size;
+	}
+
+	.side-bar-icon p{
+		font-size: $basic-mi-size;
+	}
+
+	.sidebar:hover {
+		width: 17%;
+		.side-bar-icon p{
+			animation-name: sidebar-move;
+			animation-duration: 1s;
+			animation-fill-mode: forwards;	
+		}
+		.side-bar-icon{
+			text-align: left;
+		}
+	}
+
+	@keyframes sidebar-move {
+		0%{
+			transform: translateX(-100px);
+		}
+		100%{
+			transform: translateX(22px);
+		}
+	}
+
+	.content-card{	
+		width: 100%;	
+		height: 100%;
+		padding: $basic-mi-size;	
+	}
+
+	.content-card-text{
+		font-size: $basic-lg-size;
+	}
+	
+	.chart-box{
+		width: 100%;
+		height: 100%;
+	}
+}
